@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Details - Student Portal</title> 
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <div class="page-wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="assets/images/logo.png" alt="Portal Logo">
+                <h2>Student Portal</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="dashboard.html"><i class="fa-solid fa-table-columns icon"></i> Dashboard</a></li>
+                    <li><a href="courses.html" class="active"><i class="fa-solid fa-book icon"></i> My Courses</a></li>
+                    <li><a href="assignments.html"><i class="fa-solid fa-clipboard-list icon"></i> Assignments</a></li>
+                    <li><a href="calendar.html"><i class="fa-solid fa-calendar-days icon"></i> Calendar</a></li>
+                    <li><a href="profile.html"><i class="fa-solid fa-user icon"></i> Profile & Settings</a></li>
+                    <li><a href="login.html"><i class="fa-solid fa-arrow-right-from-bracket icon"></i> Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <div class="main-content">
+            <header class="header">
+                 <div class="header-left">
+                    <button class="mobile-menu-button"><i class="fa-solid fa-bars"></i></button>
+                    <h1 class="header-title" id="course-page-title">Course Details</h1>
+                </div>
+                <div class="header-right">
+                    <a href="#" class="header-icon"><i class="fa-solid fa-bell"></i><span class="notification-badge">3</span></a>
+                    <a href="#" class="header-icon"><i class="fa-solid fa-envelope"></i><span class="notification-badge">4</span></a>
+                    <div class="profile-info">
+                        <img src="assets/images/profile-pic.png" alt="Profile Picture">
+                        <div class="profile-text">
+                            <span class="profile-name" id="user-name">John Doe</span>
+                            <span class="profile-id" id="user-id">ID: CSE2024001</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <main class="page-content">
+                <div id="course-detail-header" class="card" style="margin-bottom: 2rem;">
+                    </div>
+
+                <div class="card">
+                    <div class="tabs">
+                        <button class="tab-link active" data-tab="assignments">Assignments</button>
+                        <button class="tab-link" data-tab="syllabus">Syllabus</button>
+                        <button class="tab-link" data-tab="grades">Grades</button>
+                        <button class="tab-link" data-tab="resources">Files & Resources</button>
+                    </div>
+
+                    <div id="assignments" class="tab-content active">
+                        <h3>Assignments</h3>
+                        <ul id="course-assignment-list">
+                           </ul>
+                        
+                        <hr style="margin: 2rem 0;">
+
+                        <h4>Submit an Assignment</h4>
+                        <form id="file-upload-form" method="POST" action="#" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="assignment-select">Choose Assignment</label>
+                                <select id="assignment-select" class="form-control">
+                                    </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="file-input">Upload File</label>
+                                <input type="file" id="file-input" class="form-control" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                    <div id="syllabus" class="tab-content">
+                        <h3>Syllabus</h3>
+                        <p>The syllabus content for this course will be displayed here. It will outline the course objectives, schedule, grading policy, and required materials.</p>
+                    </div>
+                    <div id="grades" class="tab-content">
+                        <h3>Your Grades</h3>
+                        <p>A table or list of your grades for this course will appear here once they are available.</p>
+                    </div>
+                     <div id="resources" class="tab-content">
+                        <h3>Files & Resources</h3>
+                        <p>Links to lecture notes, presentations, and other course materials will be available here.</p>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <style>
+        .tabs { border-bottom: 2px solid var(--color-light-gray-2); margin-bottom: 1.5rem; }
+        .tab-link { background: none; border: none; padding: 15px 20px; cursor: pointer; font-size: 1rem; font-weight: 500; color: var(--color-medium-gray); border-bottom: 3px solid transparent; }
+        .tab-link.active { color: var(--color-accent); border-bottom-color: var(--color-accent); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+    </style>
+    <script src="js/script.js"></script>
+</body>
+</html>

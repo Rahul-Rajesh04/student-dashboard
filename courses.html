@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Courses - Student Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <div class="page-wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="assets/images/logo.png" alt="Portal Logo">
+                <h2>Student Portal</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="dashboard.html"><i class="fa-solid fa-table-columns icon"></i> Dashboard</a></li>
+                    <li><a href="courses.html" class="active"><i class="fa-solid fa-book icon"></i> My Courses</a></li>
+                    <li><a href="assignments.html"><i class="fa-solid fa-clipboard-list icon"></i> Assignments</a></li>
+                    <li><a href="calendar.html"><i class="fa-solid fa-calendar-days icon"></i> Calendar</a></li>
+                    <li><a href="profile.html"><i class="fa-solid fa-user icon"></i> Profile & Settings</a></li>
+                    <li><a href="login.html"><i class="fa-solid fa-arrow-right-from-bracket icon"></i> Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <div class="main-content">
+            <header class="header">
+                <div class="header-left">
+                    <button class="mobile-menu-button"><i class="fa-solid fa-bars"></i></button>
+                    <h1 class="header-title">My Courses</h1>
+                </div>
+                <div class="header-right">
+                    <a href="#" class="header-icon"><i class="fa-solid fa-bell"></i><span class="notification-badge">3</span></a>
+                    <a href="#" class="header-icon"><i class="fa-solid fa-envelope"></i><span class="notification-badge">4</span></a>
+                    <div class="profile-info">
+                        <img src="assets/images/profile-pic.png" alt="Profile Picture">
+                        <div class="profile-text">
+                            <span class="profile-name" id="user-name">John Doe</span>
+                            <span class="profile-id" id="user-id">ID: CSE2024001</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <main class="page-content">
+                <div id="course-list-container" class="grid-container grid-cols-3">
+                    </div>
+            </main>
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>

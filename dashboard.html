@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Student Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <div class="page-wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="assets/images/logo.png" alt="Portal Logo">
+                <h2>Student Portal</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="dashboard.html" class="active"><i class="fa-solid fa-table-columns icon"></i> Dashboard</a></li>
+                    <li><a href="courses.html"><i class="fa-solid fa-book icon"></i> My Courses</a></li>
+                    <li><a href="assignments.html"><i class="fa-solid fa-clipboard-list icon"></i> Assignments</a></li>
+                    <li><a href="calendar.html"><i class="fa-solid fa-calendar-days icon"></i> Calendar</a></li>
+                    <li><a href="profile.html"><i class="fa-solid fa-user icon"></i> Profile & Settings</a></li>
+                    <li><a href="login.html"><i class="fa-solid fa-arrow-right-from-bracket icon"></i> Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <div class="main-content">
+            <header class="header">
+                <div class="header-left">
+                    <button class="mobile-menu-button"><i class="fa-solid fa-bars"></i></button>
+                    <h1 class="header-title">Dashboard</h1>
+                </div>
+                <div class="header-right">
+                    <a href="#" class="header-icon">
+                        <i class="fa-solid fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </a>
+                    <a href="#" class="header-icon">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span class="notification-badge">4</span>
+                    </a>
+                    <div class="profile-info">
+                        <img src="assets/images/profile-pic.png" alt="Profile Picture">
+                        <div class="profile-text">
+                            <span class="profile-name" id="user-name">John Doe</span>
+                            <span class="profile-id" id="user-id">ID: CSE2024001</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <main class="page-content">
+                <div class="welcome-banner card" style="margin-bottom: 2rem;">
+                     <h2>Welcome back, <span id="welcome-user-name">John</span>!</h2>
+                    <p>Here's a quick overview of your academic progress. Stay organized and on top of your tasks!</p>
+                </div>
+
+                <div class="grid-container grid-cols-3">
+
+                    <div class="card course-card">
+                        <div class="course-card-header">
+                            <div>
+                                <h3>CSE301</h3>
+                                <p>Data Structures & Algorithms</p>
+                            </div>
+                            <span class="grade-badge">A</span>
+                        </div>
+                        <div class="course-card-body">
+                           <p><i class="icon fa-solid fa-user-tie"></i> Dr. Deepa Yogesh</p>
+                           <p><i class="icon fa-solid fa-clock"></i> Mon, Wed, Fri 10:00 - 11:00 AM</p>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-label">
+                                <span>Course Progress</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-bar-fill" style="width: 75%;"></div>
+                            </div>
+                        </div>
+                        <div class="course-card-footer">
+                            <span>3 pending assignments</span>
+                            <a href="course_detail.html" class="btn btn-primary" style="padding: 8px 15px;">View</a>
+                        </div>
+                    </div>
+                    <div class="card course-card">
+                        <div class="course-card-header">
+                            <div>
+                                <h3>AIML501</h3>
+                                <p>Machine Learning</p>
+                            </div>
+                            <span class="grade-badge">A-</span>
+                        </div>
+                        <div class="course-card-body">
+                           <p><i class="icon fa-solid fa-user-tie"></i> Prof. Sharon Roji</p>
+                           <p><i class="icon fa-solid fa-clock"></i> Tue, Thu 2:00 - 3:30 PM</p>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-label">
+                                <span>Course Progress</span>
+                                <span>50%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-bar-fill" style="width: 50%;"></div>
+                            </div>
+                        </div>
+                        <div class="course-card-footer">
+                            <span>4 pending assignments</span>
+                            <a href="course_detail.html" class="btn btn-primary" style="padding: 8px 15px;">View</a>
+                        </div>
+                    </div>
+                     <div class="card course-card">
+                        <div class="course-card-header">
+                            <div>
+                                <h3>CSE401</h3>
+                                <p>Database Systems</p>
+                            </div>
+                            <span class="grade-badge">B</span>
+                        </div>
+                        <div class="course-card-body">
+                           <p><i class="icon fa-solid fa-user-tie"></i> Dr. Naveen J</p>
+                           <p><i class="icon fa-solid fa-clock"></i> Mon, Wed 3:00 - 4:00 PM</p>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-label">
+                                <span>Course Progress</span>
+                                <span>82%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-bar-fill" style="width: 82%;"></div>
+                            </div>
+                        </div>
+                        <div class="course-card-footer">
+                            <span>2 pending assignments</span>
+                            <a href="course_detail.html" class="btn btn-primary" style="padding: 8px 15px;">View</a>
+                        </div>
+                    </div>
+                </div>
+                </main>
+        </div>
+    </div>
+    
+    </body>
+</html>

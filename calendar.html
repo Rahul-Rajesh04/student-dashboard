@@ -1,0 +1,45 @@
+<main class="page-content">
+    <div class="card">
+        <div class="calendar-header">
+            <button class="btn"><i class="fa-solid fa-chevron-left"></i></button>
+            <h2>September 2025</h2>
+            <button class="btn"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+        <div class="calendar-grid">
+            <div class="day-name">Sun</div>
+            <div class="day-name">Mon</div>
+            <div class="day-name">Tue</div>
+            <div class="day-name">Wed</div>
+            <div class="day-name">Thu</div>
+            <div class="day-name">Fri</div>
+            <div class="day-name">Sat</div>
+            
+            <div class="day other-month">31</div>
+            <div class="day">1</div>
+            <div class="day">2</div>
+            <div class="day">3
+                <div class="event cse401">CSE401 Class</div>
+            </div>
+            <div class="day">4
+                <div class="event aiml501">AIML501 Class</div>
+            </div>
+            <div class="day">5
+                <div class="event cse301">CSE301 Class</div>
+                <div class="event due-date">Project Proposal Due</div>
+            </div>
+            <div class="day">6</div>
+            </div>
+    </div>
+</main>
+<style>
+    .calendar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+    .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; }
+    .day, .day-name { padding: 10px; border-radius: 4px; background: #fdfdfd; min-height: 100px; border: 1px solid var(--color-light-gray-2); }
+    .day-name { min-height: auto; text-align: center; font-weight: 600; }
+    .other-month { color: var(--color-medium-gray); }
+    .event { font-size: 0.8rem; padding: 3px 5px; border-radius: 4px; color: white; margin-top: 5px; }
+    .event.cse301 { background: #4a69bd; }
+    .event.aiml501 { background: #6a89cc; }
+    .event.cse401 { background: #82ccdd; }
+    .event.due-date { background: var(--color-danger); }
+</style>
