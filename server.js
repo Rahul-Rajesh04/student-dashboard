@@ -45,7 +45,8 @@ app.use(session({
 
 // 6. Serve static files
 app.use(express.static(path.join(__dirname)));
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use(express.static(path.join(__dirname, 'public')));
+
 
 // 7. API Routes
 // ==========================================================
