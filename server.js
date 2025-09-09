@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const bcrypt = require('bcryptjs');
+const multer = require('multer'); // For file uploads
 require('dotenv').config();
 const User = require('./models/User');
 
@@ -16,6 +17,18 @@ const PORT = 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// --- Multer Configuration for File Storage ---
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'uploads/'); // Folder to save the files
+    },
+    filename: function (req, file, cb) {
+        // Create a unique filename: timestamp + original name
+        cb(null, Date.now() + '-' + file.originalname);
+    }
+});
+const upload = multer({ storage: storage });
+
 // 4. Database Connection
 mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log('Successfully connected to MongoDB Atlas!'))
@@ -23,17 +36,16 @@ mongoose.connect(process.env.MONGO_URI)
 
 // 5. Session Configuration
 app.use(session({
-    secret: 'a_very_long_random_secret_key_for_security', // Replace with a long, random string
+    secret: 'a_very_long_random_secret_key_for_security',
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({ mongoUrl: process.env.MONGO_URI }),
-    cookie: {
-        maxAge: 1000 * 60 * 60 * 24 // Cookie expires after 1 day (in milliseconds)
-    }
+    cookie: { maxAge: 1000 * 60 * 60 * 24 } // 1 day
 }));
 
 // 6. Serve static files
 app.use(express.static(path.join(__dirname)));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // 7. API Routes
 // ==========================================================
@@ -67,7 +79,7 @@ app.post('/api/login', async (req, res) => {
             return res.status(400).json({ message: "Invalid credentials. Please try again." });
         }
         req.session.userId = user._id;
-        res.status(200).json({ message: "Login successful!", user: { name: user.fullName } });
+        res.status(200).json({ message: "Login successful!" });
     } catch (error) {
         res.status(500).json({ message: "Server error during login." });
     }
@@ -78,11 +90,7 @@ app.get('/api/current-user', async (req, res) => {
     if (req.session.userId) {
         try {
             const user = await User.findById(req.session.userId).select('-password');
-            if (user) {
-                res.json(user);
-            } else {
-                res.status(404).json({ message: 'User not found' });
-            }
+            res.json(user);
         } catch (error) {
             res.status(500).json({ message: 'Server error' });
         }
@@ -91,7 +99,7 @@ app.get('/api/current-user', async (req, res) => {
     }
 });
 
-// DELETE ACCOUNT ROUTE (This is the new part)
+// DELETE ACCOUNT ROUTE
 app.delete('/api/delete-account', async (req, res) => {
     if (!req.session.userId) {
         return res.status(401).json({ message: 'Not authenticated' });
@@ -105,14 +113,25 @@ app.delete('/api/delete-account', async (req, res) => {
             res.status(200).json({ message: 'Account successfully deleted.' });
         });
     } catch (error) {
-        console.error("Error deleting account:", error);
         res.status(500).json({ message: 'Server error during account deletion.' });
     }
 });
 
+// FILE UPLOAD ROUTE
+app.post('/api/upload', upload.single('assignmentFile'), (req, res) => {
+    if (!req.file) {
+        return res.status(400).json({ message: 'No file was uploaded.' });
+    }
+    console.log('File uploaded successfully:', req.file);
+    res.status(200).json({ 
+        message: 'File uploaded successfully!', 
+        filePath: req.file.path 
+    });
+});
+
 // ==========================================================
 
-// Route for the homepage
+// Homepage route
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'dashboard.html'));
 });

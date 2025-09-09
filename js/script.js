@@ -188,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
         renderTable();
     }
     
-    function renderCourseDetail() {
+function renderCourseDetail() {
         const header = document.getElementById('course-detail-header');
         if (!header) return;
 
@@ -222,13 +222,47 @@ document.addEventListener('DOMContentLoaded', () => {
         tabLinks.forEach(link => {
             link.addEventListener('click', () => {
                 const tabId = link.getAttribute('data-tab');
-                
                 tabLinks.forEach(l => l.classList.remove('active'));
                 tabContents.forEach(c => c.classList.remove('active'));
-                
                 link.classList.add('active');
                 document.getElementById(tabId).classList.add('active');
             });
+        });
+
+        // --- NEW: File Upload Form Logic ---
+        const uploadForm = document.getElementById('file-upload-form');
+        const fileInput = document.getElementById('file-input');
+
+        uploadForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            if (fileInput.files.length === 0) {
+                alert('Please select a file to upload.');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('assignmentFile', fileInput.files[0]); // 'assignmentFile' must match the name in the multer config
+            formData.append('assignmentId', assignmentSelect.value);
+
+            try {
+                const response = await fetch('/api/upload', {
+                    method: 'POST',
+                    body: formData // No 'Content-Type' header needed; the browser sets it for FormData
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    alert('Assignment submitted successfully!');
+                    uploadForm.reset();
+                } else {
+                    alert(`Error: ${result.message}`);
+                }
+            } catch (error) {
+                console.error('File upload error:', error);
+                alert('An error occurred during file upload.');
+            }
         });
     }
 
