@@ -56,11 +56,58 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function populateHeader(user) {
-        document.querySelectorAll('#user-name').forEach(el => el.textContent = user.name);
-        document.querySelectorAll('#user-id').forEach(el => el.textContent = `ID: ${user.id}`);
-        const welcomeName = document.querySelector('#welcome-user-name');
-        if(welcomeName) welcomeName.textContent = user.firstName;
+/**
+ * Populates the header and other dynamic elements by fetching the current user's data from the server.
+ */
+/**
+     * Populates the header and other dynamic elements by fetching the current user's data from the server.
+     */
+    async function populateUserData() {
+        try {
+            const response = await fetch('/api/current-user');
+            
+            // If the server says we're not logged in, redirect to the login page
+            if (!response.ok) {
+                // Check if we are not already on a public page before redirecting
+                const currentPage = window.location.pathname.split('/').pop();
+                if (currentPage !== 'login.html' && currentPage !== 'signup.html') {
+                    window.location.href = 'login.html';
+                }
+                return;
+            }
+
+            const user = await response.json();
+
+            // Populate all elements with the user's name
+            document.querySelectorAll('#user-name').forEach(el => el.textContent = user.fullName);
+            
+            // Populate the welcome banner on the dashboard
+            const welcomeName = document.querySelector('#welcome-user-name');
+            if (welcomeName) {
+                const firstName = user.fullName.split(' ')[0];
+                welcomeName.textContent = firstName;
+            }
+
+            // Populate the email as the ID for now
+            document.querySelectorAll('#user-id').forEach(el => el.textContent = user.email);
+            
+            // Populate the fields on the profile page
+            const profileName = document.getElementById('profile-name');
+            if (profileName) profileName.value = user.fullName;
+            
+            const profileEmail = document.getElementById('profile-email');
+            if (profileEmail) profileEmail.value = user.email;
+
+            const profileId = document.getElementById('profile-id-field');
+            if (profileId) profileId.value = user._id; // Assuming user object has _id
+
+        } catch (error) {
+            console.error('Failed to fetch user data, redirecting to login.', error);
+            const currentPage = window.location.pathname.split('/').pop();
+            if (currentPage !== 'login.html' && currentPage !== 'signup.html') {
+                window.location.href = 'login.html';
+            }
+        }
     }
 
     // =================================================================================
@@ -410,21 +457,59 @@ function setupNotificationsPage() {
             closeModal();
         });
     }
+/**
+     * Sets up client-side validation and server communication for login and signup forms.
+     */
+    /**
+ * Sets up client-side validation and server communication for login and signup forms.
+ */
+/**
+     * Sets up client-side validation and server communication for login and signup forms.
+     */
     function handleAuthForms() {
         const loginForm = document.getElementById('login-form');
         const signupForm = document.getElementById('signup-form');
 
         if (loginForm) {
-            loginForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                alert('Login successful! Redirecting to dashboard...');
-                window.location.href = 'dashboard.html';
+            loginForm.addEventListener('submit', async (e) => {
+                e.preventDefault(); // Prevents the form from submitting to login.html
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                const errorEl = document.getElementById('login-error');
+
+                try {
+                    // Send login data to the correct API endpoint
+                    const response = await fetch('/api/login', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ email, password }),
+                    });
+
+                    const result = await response.json();
+
+                    if (response.ok) {
+                        // On successful login, redirect to the dashboard
+                        errorEl.style.display = 'none';
+                        window.location.href = 'dashboard.html';
+                    } else {
+                        // Show error message from the server
+                        errorEl.textContent = result.message;
+                        errorEl.style.display = 'block';
+                    }
+                } catch (error) {
+                    console.error('Login fetch error:', error);
+                    errorEl.textContent = 'A network error occurred. Please try again.';
+                    errorEl.style.display = 'block';
+                }
             });
         }
 
         if (signupForm) {
-            signupForm.addEventListener('submit', (e) => {
+            signupForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
+                
+                const fullName = document.getElementById('fullname').value;
+                const email = document.getElementById('email').value;
                 const password = document.getElementById('password').value;
                 const confirmPassword = document.getElementById('confirm-password').value;
                 const errorEl = document.getElementById('signup-error');
@@ -432,25 +517,48 @@ function setupNotificationsPage() {
                 if (password !== confirmPassword) {
                     errorEl.textContent = 'Passwords do not match.';
                     errorEl.style.display = 'block';
-                } else {
-                     errorEl.style.display = 'none';
-                     alert('Signup successful! Redirecting to dashboard...');
-                     window.location.href = 'dashboard.html';
+                    return;
+                }
+
+                try {
+                    const response = await fetch('/api/signup', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ fullname: fullName, email, password }),
+                    });
+
+                    const result = await response.json();
+
+                    if (response.ok) {
+                        errorEl.style.display = 'none';
+                        alert('Signup successful! Please log in.');
+                        window.location.href = 'login.html';
+                    } else {
+                        errorEl.textContent = result.message;
+                        errorEl.style.display = 'block';
+                    }
+                } catch (error) {
+                    console.error('Signup fetch error:', error);
+                    errorEl.textContent = 'A network error occurred. Please try again.';
+                    errorEl.style.display = 'block';
                 }
             });
         }
     }
 
-
-    // =================================================================================
+// =================================================================================
     // INITIALIZATION & ROUTING
     // =================================================================================
 
     setupMobileMenu();
-    populateHeader(mockData.user);
-
     const currentPage = window.location.pathname.split('/').pop();
 
+    // Protect all pages except login and signup
+    if (currentPage !== 'login.html' && currentPage !== 'signup.html') {
+        populateUserData();
+    }
+    
+    // Run page-specific functions
     if (currentPage === 'dashboard.html' || currentPage === '') {
         renderCourses('dashboard-courses-container', mockData.courses.slice(0, 3));
     }
@@ -469,41 +577,17 @@ function setupNotificationsPage() {
     if (currentPage === 'calendar.html') {
         setupCalendar();
     }
+    if (currentPage === 'notifications.html') {
+        setupNotificationsPage();
+    }
+    if (currentPage === 'messages.html') {
+        setupMessagesPage();
+    }
     if (currentPage === 'login.html' || currentPage === 'signup.html') {
         handleAuthForms();
     }
-    // ... in the router section at the bottom of the file
-if (currentPage === 'profile.html') {
-    renderProfilePage();
-}
-if (currentPage === 'calendar.html') {
-    setupCalendar();
-}
 
-// Add this new block
-if (currentPage === 'notifications.html') {
-    setupNotificationsPage();
-}
-
-if (currentPage === 'login.html' || currentPage === 'signup.html') {
-    handleAuthForms();
-}
-// ... in the router section at the bottom of the file
-if (currentPage === 'notifications.html') {
-    setupNotificationsPage();
-}
-
-// Add this new block
-if (currentPage === 'messages.html') {
-    setupMessagesPage();
-}
-
-if (currentPage === 'login.html' || currentPage === 'signup.html') {
-    handleAuthForms();
-}
-
-// ...
-
+    // Inject status badge styles
     document.head.insertAdjacentHTML('beforeend', `<style>
         .status-badge { padding: 3px 8px; border-radius: 12px; font-size: 0.8rem; color: white; font-weight: 500; }
         .status-badge.pending { background-color: var(--color-warning); color: var(--color-primary); }
@@ -511,6 +595,7 @@ if (currentPage === 'login.html' || currentPage === 'signup.html') {
         .status-badge.graded { background-color: var(--color-success); }
     </style>`);
     
+    // Fallback for dashboard grid ID
     if(document.querySelector('.grid-container')) {
         const grid = document.querySelector('.grid-container');
         if(!grid.id) {
