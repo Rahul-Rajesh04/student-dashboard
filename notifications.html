@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Notifications - Student Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <div class="page-wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="assets/images/logo.png" alt="Portal Logo">
+                <h2>Student Portal</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="dashboard.html"><i class="fa-solid fa-table-columns icon"></i> Dashboard</a></li>
+                    <li><a href="courses.html"><i class="fa-solid fa-book icon"></i> My Courses</a></li>
+                    <li><a href="assignments.html"><i class="fa-solid fa-clipboard-list icon"></i> Assignments</a></li>
+                    <li><a href="calendar.html"><i class="fa-solid fa-calendar-days icon"></i> Calendar</a></li>
+                    <li><a href="profile.html"><i class="fa-solid fa-user icon"></i> Profile & Settings</a></li>
+                    <li><a href="login.html"><i class="fa-solid fa-arrow-right-from-bracket icon"></i> Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <div class="main-content">
+            <header class="header">
+                <div class="header-left">
+                    <button class="mobile-menu-button"><i class="fa-solid fa-bars"></i></button>
+                    <h1 class="header-title">All Notifications</h1>
+                </div>
+                <div class="header-right">
+                    </div>
+            </header>
+
+            <main class="page-content">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Your Notifications</h3>
+<button id="mark-all-read-btn" class="btn btn-primary">Mark All as Read</button>                    </div>
+                    <ul class="notification-list">
+                        <li class="notification-item unread">
+                            <div class="notification-icon-wrapper grade">
+                                <i class="fa-solid fa-file-circle-check icon"></i>
+                            </div>
+                            <div class="notification-content">
+                                <p><strong>Grade Posted:</strong> Your grade for "K-Means Clustering" in <strong>AIML501</strong> has been posted.</p>
+                                <span class="timestamp">2 hours ago</span>
+                            </div>
+                        </li>
+                        <li class="notification-item unread">
+                            <div class="notification-icon-wrapper due-date">
+                                <i class="fa-solid fa-calendar-day icon"></i>
+                            </div>
+                            <div class="notification-content">
+                                <p><strong>Due Date Reminder:</strong> Assignment "SQL Query Practice" in <strong>CSE401</strong> is due tomorrow.</p>
+                                <span class="timestamp">1 day ago</span>
+                            </div>
+                        </li>
+                        <li class="notification-item">
+                            <div class="notification-icon-wrapper announcement">
+                                <i class="fa-solid fa-bullhorn icon"></i>
+                            </div>
+                            <div class="notification-content">
+                                <p><strong>New Announcement:</strong> A new announcement was posted in <strong>CSE301</strong>.</p>
+                                <span class="timestamp">3 days ago</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>

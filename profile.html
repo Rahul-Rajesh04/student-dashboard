@@ -1,31 +1,187 @@
-<main class="page-content">
-    <div class="grid-container grid-cols-2">
-        <div class="card">
-            <div class="card-header">
-                <h3>Profile Information</h3>
-                <button id="edit-profile-btn" class="btn btn-primary">Edit Profile</button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile & Settings - Student Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <div class="page-wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="assets/images/logo.png" alt="Portal Logo">
+                <h2>Student Portal</h2>
             </div>
-            <form id="profile-form">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="dashboard.html"><i class="fa-solid fa-table-columns icon"></i> Dashboard</a></li>
+                    <li><a href="courses.html"><i class="fa-solid fa-book icon"></i> My Courses</a></li>
+                    <li><a href="assignments.html"><i class="fa-solid fa-clipboard-list icon"></i> Assignments</a></li>
+                    <li><a href="calendar.html"><i class="fa-solid fa-calendar-days icon"></i> Calendar</a></li>
+                    <li><a href="profile.html" class="active"><i class="fa-solid fa-user icon"></i> Profile & Settings</a></li>
+                    <li><a href="login.html"><i class="fa-solid fa-arrow-right-from-bracket icon"></i> Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <div class="main-content">
+            <header class="header">
+                <div class="header-left">
+                    <button class="mobile-menu-button"><i class="fa-solid fa-bars"></i></button>
+                    <h1 class="header-title">Profile & Settings</h1>
+                </div>
+                <div class="header-right">
+                    <div class="header-icon-wrapper">
+                        <a href="#" class="header-icon">
+                            <i class="fa-solid fa-bell"></i>
+                            <span class="notification-badge">3</span>
+                        </a>
+                        <div class="dropdown-panel">
+                            <div class="dropdown-header">
+                                <h4>Notifications</h4>
+                            </div>
+                            <ul class="dropdown-list">
+                                <li><a href="#"><strong>CSE401:</strong> Assignment "SQL Query Practice" is due tomorrow.</a></li>
+                                <li><a href="#"><strong>AIML501:</strong> Your grade for "K-Means Clustering" has been posted.</a></li>
+                                <li><a href="#"><strong>CSE301:</strong> New announcement posted in "Course Resources".</a></li>
+                            </ul>
+                            <div class="dropdown-footer">
+                                <a href="notifications.html">View All Notifications</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="header-icon-wrapper">
+                        <a href="#" class="header-icon">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span class="notification-badge">4</span>
+                        </a>
+                        <div class="dropdown-panel">
+                            <div class="dropdown-header">
+                                <h4>Messages</h4>
+                            </div>
+                            <ul class="dropdown-list">
+                                <li><a href="#"><strong>Dr. Naveen J:</strong> "Reminder: The project proposal deadline..."</a></li>
+                                <li><a href="#"><strong>Sharon Roji:</strong> "Hi John, please see my feedback on your..."</a></li>
+                                <li><a href="#"><strong>Study Group:</strong> "Are we meeting at the library at 4 PM?"</a></li>
+                                <li><a href="#"><strong>Admin Office:</strong> "Important: Fee payment deadline is..."</a></li>
+                            </ul>
+                            <div class="dropdown-footer">
+                                <a href="messages.html">View All Messages</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="profile.html" class="profile-link">
+                        <div class="profile-info">
+                            <img src="assets/images/profile-pic.png" alt="Profile Picture">
+                            <div class="profile-text">
+                                <span class="profile-name" id="user-name">John Doe</span>
+                                <span class="profile-id" id="user-id">ID: CSE2024001</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </header>
+
+            <main class="page-content">
+    <div class="card">
+        <div class="tabs">
+            <button class="tab-link active" data-tab="profile">
+                <i class="fa-solid fa-user icon"></i> Profile Information
+            </button>
+            <button class="tab-link" data-tab="security">
+                <i class="fa-solid fa-shield-halved icon"></i> Security
+            </button>
+            <button class="tab-link" data-tab="preferences">
+                <i class="fa-solid fa-sliders icon"></i> Preferences
+            </button>
+            <button class="tab-link" data-tab="grades">
+                <i class="fa-solid fa-chart-pie icon"></i> Grades
+            </button>
+        </div>
+
+        <div id="profile" class="tab-content active">
+            <h3>Edit Your Profile</h3>
+            <div class="profile-layout">
+                <div class="profile-pic-container">
+                    <img src="assets/images/profile-pic.png" alt="Profile Picture" id="profile-page-pic">
+                    <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Upload New Picture</button>
+                </div>
+                <form id="profile-form" class="profile-form-container">
+                    <div class="form-group">
+                        <label for="profile-name">Full Name</label>
+                        <input type="text" id="profile-name" class="form-control" value="John Doe" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="profile-email">Email Address</label>
+                        <input type="email" id="profile-email" class="form-control" value="john.doe@university.edu" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="profile-id-field">Student ID</label>
+                        <input type="text" id="profile-id-field" class="form-control" value="CSE2024001" disabled>
+                    </div>
+                    <div class="profile-form-buttons">
+                        <button type="button" id="edit-profile-btn" class="btn btn-primary">Edit Profile</button>
+                        <button type="submit" id="save-profile-btn" class="btn" style="display: none;">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="security" class="tab-content">
+            <h3>Change Password</h3>
+            <form id="password-form">
                 <div class="form-group">
-                    <label for="profile-name">Full Name</label>
-                    <input type="text" id="profile-name" class="form-control" value="John Doe" disabled>
+                    <label for="current-password">Current Password</label>
+                    <input type="password" id="current-password" class="form-control" placeholder="Enter your current password">
                 </div>
                 <div class="form-group">
-                    <label for="profile-email">Email Address</label>
-                    <input type="email" id="profile-email" class="form-control" value="john.doe@university.edu" disabled>
+                    <label for="new-password">New Password</label>
+                    <input type="password" id="new-password" class="form-control" placeholder="Enter a new password">
                 </div>
-                <div class="form-group">
-                    <label for="profile-id">Student ID</label>
-                    <input type="text" id="profile-id-field" class="form-control" value="CSE2024001" disabled>
+                 <div class="form-group">
+                    <label for="confirm-new-password">Confirm New Password</label>
+                    <input type="password" id="confirm-new-password" class="form-control" placeholder="Confirm your new password">
                 </div>
-                <button type="submit" id="save-profile-btn" class="btn" style="display: none;">Save Changes</button>
+                <button type="submit" class="btn btn-primary">Update Password</button>
             </form>
         </div>
 
-        <div class="card">
-             <h3>Grade Distribution</h3>
-             <canvas id="gradeChart"></canvas>
+        <div id="preferences" class="tab-content">
+            <h3>Notification Preferences</h3>
+            <form id="notification-form">
+                <div class="form-group-checkbox">
+                    <input type="checkbox" id="email-notifications" checked>
+                    <label for="email-notifications">Email me about assignment deadlines</label>
+                </div>
+                <div class="form-group-checkbox">
+                    <input type="checkbox" id="sms-notifications">
+                    <label for="sms-notifications">Send SMS alerts for grade updates</label>
+                </div>
+                 <div class="form-group-checkbox">
+                    <input type="checkbox" id="announcement-notifications" checked>
+                    <label for="announcement-notifications">Notify me about new course announcements</label>
+                </div>
+                <button type="submit" class="btn btn-primary" style="margin-top: 1rem;">Save Preferences</button>
+            </form>
+        </div>
+        
+        <div id="grades" class="tab-content">
+            <h3>Your Grade Distribution</h3>
+            <p>This chart shows an overview of your grades across all courses.</p>
+             <div class="chart-container" style="position: relative; height: 350px; margin-top: 2rem;">
+                 <canvas id="gradeChart"></canvas>
+             </div>
         </div>
     </div>
 </main>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

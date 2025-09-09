@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Messages - Student Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <div class="page-wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="assets/images/logo.png" alt="Portal Logo">
+                <h2>Student Portal</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="dashboard.html"><i class="fa-solid fa-table-columns icon"></i> Dashboard</a></li>
+                    <li><a href="courses.html"><i class="fa-solid fa-book icon"></i> My Courses</a></li>
+                    <li><a href="assignments.html"><i class="fa-solid fa-clipboard-list icon"></i> Assignments</a></li>
+                    <li><a href="calendar.html"><i class="fa-solid fa-calendar-days icon"></i> Calendar</a></li>
+                    <li><a href="profile.html"><i class="fa-solid fa-user icon"></i> Profile & Settings</a></li>
+                    <li><a href="login.html"><i class="fa-solid fa-arrow-right-from-bracket icon"></i> Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <div class="main-content">
+            <header class="header">
+                <div class="header-left">
+                    <button class="mobile-menu-button"><i class="fa-solid fa-bars"></i></button>
+                    <h1 class="header-title">All Messages</h1>
+                </div>
+                <div class="header-right">
+                    </div>
+            </header>
+
+            <main class="page-content">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Your Inbox</h3>
+<button id="compose-btn" class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i> Compose</button>
+                    </div>
+                    <ul class="message-list">
+                        <li class="message-item unread">
+                            <div class="message-sender">
+                                <img src="assets/images/profile-pic.png" alt="Sender Picture">
+                                <span>Dr. Naveen J</span>
+                            </div>
+                            <div class="message-subject">
+                                <p>Reminder: The project proposal deadline is this Friday.</p>
+                            </div>
+                            <div class="message-timestamp">
+                                <span>Sep 9, 2025</span>
+                            </div>
+                        </li>
+                        <li class="message-item unread">
+                            <div class="message-sender">
+                                <img src="assets/images/profile-pic.png" alt="Sender Picture">
+                                <span>Sharon Roji</span>
+                            </div>
+                            <div class="message-subject">
+<p>Hi <span class="message-user-name"></span>, please see my feedback on your K-Means lab submission.</p>                            </div>
+                            <div class="message-timestamp">
+                                <span>Sep 8, 2025</span>
+                            </div>
+                        </li>
+                         <li class="message-item">
+                            <div class="message-sender">
+                                <img src="assets/images/profile-pic.png" alt="Sender Picture">
+                                <span>Study Group</span>
+                            </div>
+                            <div class="message-subject">
+                                <p>Are we meeting at the library at 4 PM to go over the DSA concepts?</p>
+                            </div>
+                            <div class="message-timestamp">
+                                <span>Sep 7, 2025</span>
+                            </div>
+                        </li>
+                         <li class="message-item">
+                            <div class="message-sender">
+                                <img src="assets/images/profile-pic.png" alt="Sender Picture">
+                                <span>Admin Office</span>
+                            </div>
+                            <div class="message-subject">
+                                <p>Important: Fee payment deadline for the next semester is approaching.</p>
+                            </div>
+                            <div class="message-timestamp">
+                                <span>Sep 5, 2025</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </main>
+        </div>
+    </div>
+    <div id="compose-modal" class="modal-overlay">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>New Message</h3>
+            <button id="close-modal-btn" class="close-btn">&times;</button>
+        </div>
+        <form id="compose-form">
+            <div class="form-group">
+                <label for="recipient">To:</label>
+                <input type="text" id="recipient" class="form-control" placeholder="Enter recipient's name or ID">
+            </div>
+            <div class="form-group">
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject" class="form-control" placeholder="Enter message subject">
+            </div>
+            <div class="form-group">
+                <label for="message-body">Message:</label>
+                <textarea id="message-body" class="form-control" rows="8" placeholder="Type your message here..."></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="cancel-modal-btn" class="btn btn-secondary">Cancel</button>
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="js/script.js"></script>
+</body>
+</html>

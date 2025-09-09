@@ -33,78 +33,80 @@
                     <h1 class="header-title">Calendar</h1>
                 </div>
                 <div class="header-right">
-                    <a href="#" class="header-icon"><i class="fa-solid fa-bell"></i><span class="notification-badge">3</span></a>
-                    <a href="#" class="header-icon"><i class="fa-solid fa-envelope"></i><span class="notification-badge">4</span></a>
-                    <div class="profile-info">
-                        <img src="assets/images/profile-pic.png" alt="Profile Picture">
-                        <div class="profile-text">
-                            <span class="profile-name" id="user-name">John Doe</span>
-                            <span class="profile-id" id="user-id">ID: CSE2024001</span>
+                    <div class="header-icon-wrapper">
+                        <a href="#" class="header-icon">
+                            <i class="fa-solid fa-bell"></i>
+                            <span class="notification-badge">3</span>
+                        </a>
+                        <div class="dropdown-panel">
+                            <div class="dropdown-header">
+                                <h4>Notifications</h4>
+                            </div>
+                            <ul class="dropdown-list">
+                                <li><a href="#"><strong>CSE401:</strong> Assignment "SQL Query Practice" is due tomorrow.</a></li>
+                                <li><a href="#"><strong>AIML501:</strong> Your grade for "K-Means Clustering" has been posted.</a></li>
+                                <li><a href="#"><strong>CSE301:</strong> New announcement posted in "Course Resources".</a></li>
+                            </ul>
+                            <div class="dropdown-footer">
+                                <a href="notifications.html">View All Notifications</a>
+                            </div>
                         </div>
                     </div>
+
+                    <div class="header-icon-wrapper">
+                        <a href="#" class="header-icon">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span class="notification-badge">4</span>
+                        </a>
+                        <div class="dropdown-panel">
+                            <div class="dropdown-header">
+                                <h4>Messages</h4>
+                            </div>
+                            <ul class="dropdown-list">
+                                <li><a href="#"><strong>Dr. Naveen J:</strong> "Reminder: The project proposal deadline..."</a></li>
+                                <li><a href="#"><strong>Sharon Roji:</strong> "Hi John, please see my feedback on your..."</a></li>
+                                <li><a href="#"><strong>Study Group:</strong> "Are we meeting at the library at 4 PM?"</a></li>
+                                <li><a href="#"><strong>Admin Office:</strong> "Important: Fee payment deadline is..."</a></li>
+                            </ul>
+                            <div class="dropdown-footer">
+                                <a href="messages.html">View All Messages</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="profile.html" class="profile-link">
+                        <div class="profile-info">
+                            <img src="assets/images/profile-pic.png" alt="Profile Picture">
+                            <div class="profile-text">
+                                <span class="profile-name" id="user-name">John Doe</span>
+                                <span class="profile-id" id="user-id">ID: CSE2024001</span>
+                            </div>
+                        </div>
+                    </a>
                 </div>
             </header>
 
             <main class="page-content">
-                <div class="card">
-                    <div class="calendar-header">
-                        <button class="btn"><i class="fa-solid fa-chevron-left"></i></button>
-                        <div class="calendar-title">
-                            <h2>September 2025</h2>
-                        </div>
-                        <button class="btn"><i class="fa-solid fa-chevron-right"></i></button>
-                    </div>
-                    <div class="calendar-grid">
-                        <div class="day-name">Sun</div>
-                        <div class="day-name">Mon</div>
-                        <div class="day-name">Tue</div>
-                        <div class="day-name">Wed</div>
-                        <div class="day-name">Thu</div>
-                        <div class="day-name">Fri</div>
-                        <div class="day-name">Sat</div>
-                        
-                        <div class="day other-month"><span>31</span></div>
-                        <div class="day"><span>1</span></div>
-                        <div class="day"><span>2</span></div>
-                        <div class="day"><span>3</span><div class="event cse401">CSE401 Class</div></div>
-                        <div class="day"><span>4</span><div class="event aiml501">AIML501 Class</div></div>
-                        <div class="day"><span>5</span><div class="event cse301">CSE301 Class</div></div>
-                        <div class="day"><span>6</span></div>
-                        
-                        <div class="day"><span>7</span></div>
-                        <div class="day"><span>8</span><div class="event due-date gen101">Case Study Due</div></div>
-                        <div class="day current-day"><span>9</span><div class="event aiml501">AIML501 Class</div></div>
-                        <div class="day"><span>10</span><div class="event cse301">CSE301 Class</div><div class="event due-date">Lab Assign. 5 Due</div></div>
-                        <div class="day"><span>11</span></div>
-                        <div class="day"><span>12</span><div class="event cse301">CSE301 Class</div><div class="event due-date cse401">ER Diagram Due</div></div>
-                        <div class="day"><span>13</span></div>
+    <div class="card">
+        <div class="calendar-header">
+            <button id="prev-month-btn" class="btn"><i class="fa-solid fa-chevron-left"></i></button>
+            <div class="calendar-title">
+                <h2 id="month-year-title">September 2025</h2>
+            </div>
+            <button id="next-month-btn" class="btn"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+        <div id="calendar-grid" class="calendar-grid">
+            <div class="day-name">Sun</div>
+            <div class="day-name">Mon</div>
+            <div class="day-name">Tue</div>
+            <div class="day-name">Wed</div>
+            <div class="day-name">Thu</div>
+            <div class="day-name">Fri</div>
+            <div class="day-name">Sat</div>
 
-                        <div class="day"><span>14</span></div>
-                        <div class="day"><span>15</span><div class="event due-date aiml501">K-Means Due</div></div>
-                        <div class="day"><span>16</span><div class="event aiml501">AIML501 Class</div></div>
-                        <div class="day"><span>17</span><div class="event cse401">CSE401 Class</div></div>
-                        <div class="day"><span>18</span></div>
-                        <div class="day"><span>19</span><div class="event cse301">CSE301 Class</div></div>
-                        <div class="day"><span>20</span></div>
-
-                        <div class="day"><span>21</span></div>
-                        <div class="day"><span>22</span><div class="event cse401">CSE401 Class</div><div class="event due-date cse301">Project Ph. 1 Due</div></div>
-                        <div class="day"><span>23</span><div class="event aiml501">AIML501 Class</div></div>
-                        <div class="day"><span>24</span></div>
-                        <div class="day"><span>25</span><div class="event due-date cse401">SQL Query Due</div></div>
-                        <div class="day"><span>26</span><div class="event cse301">CSE301 Class</div></div>
-                        <div class="day"><span>27</span></div>
-
-                        <div class="day"><span>28</span></div>
-                        <div class="day"><span>29</span><div class="event due-date aiml501">Paper Review Due</div></div>
-                        <div class="day"><span>30</span></div>
-                        <div class="day other-month"><span>1</span></div>
-                        <div class="day other-month"><span>2</span></div>
-                        <div class="day other-month"><span>3</span></div>
-                        <div class="day other-month"><span>4</span></div>
-                    </div>
-                </div>
-            </main>
+            </div>
+    </div>
+</main>
         </div>
     </div>
     <script src="js/script.js"></script>

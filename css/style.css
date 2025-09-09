@@ -625,3 +625,473 @@ a:hover {
 .event.cse401 { background-color: #82ccdd; }
 .event.gen101 { background-color: #ff9f43; }
 .event.due-date { background-color: var(--color-danger); }
+
+/* New color-coded event types */
+.event.event-quiz { background-color: #9b59b6; } /* Purple */
+.event.event-project { background-color: #3498db; } /* Blue */
+.event.event-lab { background-color: #2ecc71; } /* Green */
+.event.event-report { background-color: #f39c12; } /* Orange */
+
+/* New style for past-due events */
+.event.past-due {
+    background-color: var(--color-medium-gray);
+    text-decoration: line-through;
+    opacity: 0.8;
+}
+/* =================================== */
+/* PROFILE & SETTINGS PAGE STYLES      */
+/* =================================== */
+
+/* Styles for the new checkbox form group */
+.form-group-checkbox {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.form-group-checkbox label {
+    margin: 0;
+    margin-left: 10px;
+    font-weight: 500;
+    color: var(--color-dark-gray);
+}
+
+/* Custom styling for the checkbox itself */
+.form-group-checkbox input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    background-color: var(--color-light-gray-1);
+    border: 2px solid var(--color-light-gray-2);
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    transition: var(--transition-main);
+}
+
+.form-group-checkbox input[type="checkbox"]:after {
+    font-family: "Font Awesome 6 Free";
+    content: "\f00c"; /* Font Awesome checkmark icon */
+    font-weight: 900;
+    font-size: 12px;
+    color: white;
+    display: none;
+}
+
+.form-group-checkbox input[type="checkbox"]:checked {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+}
+
+.form-group-checkbox input[type="checkbox"]:checked:after {
+    display: block;
+}
+
+/* =================================== */
+/* PROFILE PAGE - TAB LAYOUT STYLES    */
+/* =================================== */
+
+/* Tab navigation bar */
+.tabs {
+    border-bottom: 2px solid var(--color-light-gray-2);
+    margin-bottom: 2rem;
+    display: flex;
+    flex-wrap: wrap; /* Allows tabs to wrap on smaller screens */
+}
+
+.tab-link {
+    background: none;
+    border: none;
+    padding: 15px 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-medium-gray);
+    border-bottom: 3px solid transparent;
+    transition: var(--transition-main);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tab-link:hover {
+    background-color: var(--color-light-gray-1);
+    color: var(--color-dark-gray);
+}
+
+.tab-link.active {
+    color: var(--color-accent);
+    border-bottom-color: var(--color-accent);
+}
+
+/* Tab content panes */
+.tab-content {
+    display: none;
+    padding: 0 1rem;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.tab-content h3 {
+    margin-bottom: 1.5rem;
+}
+
+/* Specific layout for the profile information tab */
+.profile-layout {
+    display: flex;
+    gap: 2rem;
+}
+
+.profile-pic-container {
+    flex-basis: 200px; /* Fixed width for the picture column */
+    text-align: center;
+}
+
+#profile-page-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--color-light-gray-2);
+}
+
+.profile-form-container {
+    flex-grow: 1; /* Form takes up the remaining space */
+}
+
+.profile-form-buttons {
+    margin-top: 1rem;
+}
+/* =================================== */
+/* HEADER DROPDOWN STYLES              */
+/* =================================== */
+
+/* Wrapper for each icon to position the dropdown correctly */
+.header-icon-wrapper {
+    position: relative;
+}
+
+/* The dropdown panel itself */
+.dropdown-panel {
+    position: absolute;
+    top: 100%; /* Position it right below the wrapper */
+    right: 0;
+    width: 320px;
+    background-color: var(--color-white);
+    border-radius: var(--border-radius);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    border: 1px solid var(--color-light-gray-2);
+    overflow: hidden;
+    z-index: 1001; /* Ensure it appears above other content */
+
+    /* Hide by default */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.2s ease-in-out;
+}
+
+/* Show the dropdown when hovering over the icon's wrapper */
+.header-icon-wrapper:hover .dropdown-panel {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Styling for the content inside the dropdown */
+.dropdown-header {
+    padding: 12px 15px;
+    border-bottom: 1px solid var(--color-light-gray-2);
+}
+
+.dropdown-header h4 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.dropdown-list {
+    list-style-type: none;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.dropdown-list li a {
+    display: block;
+    padding: 12px 15px;
+    font-size: 0.9rem;
+    color: var(--color-dark-gray);
+    border-bottom: 1px solid var(--color-light-gray-2);
+    transition: var(--transition-main);
+}
+
+.dropdown-list li a:hover {
+    background-color: var(--color-light-gray-1);
+    text-decoration: none;
+    color: var(--color-accent);
+}
+
+.dropdown-list li:last-child a {
+    border-bottom: none;
+}
+
+.dropdown-footer {
+    padding: 10px 15px;
+    text-align: center;
+    background-color: var(--color-light-gray-1);
+    border-top: 1px solid var(--color-light-gray-2);
+}
+
+.dropdown-footer a {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+/* =================================== */
+/* NOTIFICATIONS PAGE STYLES           */
+/* =================================== */
+
+.notification-list {
+    list-style-type: none;
+    margin-top: 1.5rem;
+}
+
+.notification-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--color-light-gray-2);
+    transition: var(--transition-main);
+}
+
+.notification-item:last-child {
+    border-bottom: none;
+}
+
+.notification-item:hover {
+    background-color: var(--color-light-gray-1);
+}
+
+/* Style for unread notifications */
+.notification-item.unread {
+    background-color: #eef3fc;
+    border-left: 4px solid var(--color-accent);
+}
+
+.notification-icon-wrapper {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white);
+}
+
+.notification-icon-wrapper .icon {
+    font-size: 1.2rem;
+}
+
+/* Color coding for different notification types */
+.notification-icon-wrapper.grade {
+    background-color: var(--color-success); /* Green */
+}
+.notification-icon-wrapper.due-date {
+    background-color: var(--color-danger); /* Red */
+}
+.notification-icon-wrapper.announcement {
+    background-color: var(--color-warning); /* Yellow */
+}
+
+.notification-content p {
+    margin: 0;
+    line-height: 1.4;
+}
+
+.notification-content .timestamp {
+    font-size: 0.8rem;
+    color: var(--color-medium-gray);
+    margin-top: 4px;
+    display: block;
+}
+/* =================================== */
+/* MESSAGES PAGE STYLES                */
+/* =================================== */
+
+.message-list {
+    list-style-type: none;
+    margin-top: 1.5rem;
+}
+
+.message-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--color-light-gray-2);
+    transition: var(--transition-main);
+    cursor: pointer;
+}
+
+.message-item:last-child {
+    border-bottom: none;
+}
+
+.message-item:hover {
+    background-color: var(--color-light-gray-1);
+}
+
+/* Style for unread messages */
+.message-item.unread {
+    background-color: #eef3fc;
+    border-left: 4px solid var(--color-accent);
+    font-weight: 600;
+}
+
+.message-sender {
+    flex-basis: 200px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.message-sender img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.message-subject {
+    flex-grow: 1;
+}
+
+.message-subject p {
+    margin: 0;
+    line-height: 1.4;
+    color: var(--color-dark-gray);
+}
+
+.message-item.unread .message-subject p {
+    color: var(--color-primary);
+}
+
+.message-timestamp {
+    flex-basis: 100px;
+    flex-shrink: 0;
+    text-align: right;
+    font-size: 0.85rem;
+    color: var(--color-medium-gray);
+}
+/* =================================== */
+/* COMPOSE MESSAGE MODAL STYLES        */
+/* =================================== */
+
+/* The semi-transparent background overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000; /* Ensures it's on top of everything */
+
+    /* Hide by default */
+    display: none;
+}
+
+/* When the modal is active, show it */
+.modal-overlay.active {
+    display: flex;
+}
+
+/* The modal pop-up window */
+.modal-content {
+    background-color: var(--color-white);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 600px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--color-light-gray-2);
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.modal-header h3 {
+    margin: 0;
+}
+
+.close-btn {
+    font-size: 2rem;
+    font-weight: 300;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-medium-gray);
+    line-height: 1;
+}
+
+/* Make the textarea for the message body resizable only vertically */
+.modal-content textarea.form-control {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+/* New secondary button style for "Cancel" */
+.btn-secondary {
+    background-color: var(--color-light-gray-2);
+    color: var(--color-dark-gray);
+    border: 1px solid var(--color-light-gray-2);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-medium-gray);
+    border-color: var(--color-medium-gray);
+    color: var(--color-white);
+}
+/* =================================== */
+/* HEADER PROFILE LINK STYLES          */
+/* =================================== */
+
+/* Removes default blue link color and underline */
+.profile-link,
+.profile-link:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Adds a subtle hover effect to indicate it's clickable */
+.profile-link .profile-info {
+    padding: 5px;
+    border-radius: var(--border-radius);
+    transition: var(--transition-main);
+}
+
+.profile-link:hover .profile-info {
+    background-color: var(--color-light-gray-1);
+}

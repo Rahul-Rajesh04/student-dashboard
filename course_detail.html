@@ -33,15 +33,56 @@
                     <h1 class="header-title" id="course-page-title">Course Details</h1>
                 </div>
                 <div class="header-right">
-                    <a href="#" class="header-icon"><i class="fa-solid fa-bell"></i><span class="notification-badge">3</span></a>
-                    <a href="#" class="header-icon"><i class="fa-solid fa-envelope"></i><span class="notification-badge">4</span></a>
-                    <div class="profile-info">
-                        <img src="assets/images/profile-pic.png" alt="Profile Picture">
-                        <div class="profile-text">
-                            <span class="profile-name" id="user-name">John Doe</span>
-                            <span class="profile-id" id="user-id">ID: CSE2024001</span>
+                    <div class="header-icon-wrapper">
+                        <a href="#" class="header-icon">
+                            <i class="fa-solid fa-bell"></i>
+                            <span class="notification-badge">3</span>
+                        </a>
+                        <div class="dropdown-panel">
+                            <div class="dropdown-header">
+                                <h4>Notifications</h4>
+                            </div>
+                            <ul class="dropdown-list">
+                                <li><a href="#"><strong>CSE401:</strong> Assignment "SQL Query Practice" is due tomorrow.</a></li>
+                                <li><a href="#"><strong>AIML501:</strong> Your grade for "K-Means Clustering" has been posted.</a></li>
+                                <li><a href="#"><strong>CSE301:</strong> New announcement posted in "Course Resources".</a></li>
+                            </ul>
+                            <div class="dropdown-footer">
+                                <a href="notifications.html">View All Notifications</a>
+                            </div>
                         </div>
                     </div>
+
+                    <div class="header-icon-wrapper">
+                        <a href="#" class="header-icon">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span class="notification-badge">4</span>
+                        </a>
+                        <div class="dropdown-panel">
+                            <div class="dropdown-header">
+                                <h4>Messages</h4>
+                            </div>
+                            <ul class="dropdown-list">
+                                <li><a href="#"><strong>Dr. Naveen J:</strong> "Reminder: The project proposal deadline..."</a></li>
+                                <li><a href="#"><strong>Sharon Roji:</strong> "Hi John, please see my feedback on your..."</a></li>
+                                <li><a href="#"><strong>Study Group:</strong> "Are we meeting at the library at 4 PM?"</a></li>
+                                <li><a href="#"><strong>Admin Office:</strong> "Important: Fee payment deadline is..."</a></li>
+                            </ul>
+                            <div class="dropdown-footer">
+                                <a href="messages.html">View All Messages</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="profile.html" class="profile-link">
+                        <div class="profile-info">
+                            <img src="assets/images/profile-pic.png" alt="Profile Picture">
+                            <div class="profile-text">
+                                <span class="profile-name" id="user-name">John Doe</span>
+                                <span class="profile-id" id="user-id">ID: CSE2024001</span>
+                            </div>
+                        </div>
+                    </a>
                 </div>
             </header>
 
