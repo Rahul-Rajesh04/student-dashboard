@@ -10,39 +10,139 @@ document.addEventListener('DOMContentLoaded', () => {
     // MOCK DATA SOURCE
     // In a real-world application, this object would be replaced by responses from a server API.
     // =================================================================================
-    const mockData = {
-        user: {
-            name: "John Doe",
-            id: "CSE2024001",
-            firstName: "John",
-            email: "john.doe@university.edu",
-            profilePic: "assets/images/profile-pic.png",
+// js/script.js
+
+const mockData = {
+    user: {
+        name: "John Doe",
+        id: "CSE2024001",
+        firstName: "John",
+        email: "john.doe@university.edu",
+        profilePic: "assets/images/profile-pic.png",
+    },
+    courses: [
+        { 
+            id: "CSE301", 
+            name: "Data Structures and Algorithms", 
+            instructor: "Dr. Deepa Yogesh", 
+            schedule: "Mon, Wed, Fri 10:00 - 11:00 AM", 
+            progress: 75, 
+            grade: "A",
+            syllabus: `
+                <h4>Course Description</h4>
+                <p>This course covers the fundamentals of data structures and algorithms, including arrays, linked lists, stacks, queues, trees, and graphs. Students will learn to analyze algorithm efficiency and apply these concepts to solve complex problems.</p>
+                <h4>Grading Policy</h4>
+                <ul>
+                    <li>Assignments: 30%</li>
+                    <li>Quizzes: 20%</li>
+                    <li>Midterm Exam: 25%</li>
+                    <li>Final Exam: 25%</li>
+                </ul>
+            `,
+            grades: [
+                { name: "Lab Assignment 1", score: "10/10" },
+                { name: "Quiz 1: Big O Notation", score: "8/10" },
+                { name: "Lab Assignment 2", score: "9/10" }
+            ],
+            resources: [
+                { name: "Lecture 1: Introduction to DSA.pdf", link: "#" },
+                { name: "Lecture 2: Arrays and Pointers.pdf", link: "#" },
+                { name: "Complete Syllabus.pdf", link: "#" }
+            ]
         },
-        courses: [
-            { id: "CSE301", name: "Data Structures and Algorithms", instructor: "Dr. Deepa Yogesh", schedule: "Mon, Wed, Fri 10:00 - 11:00 AM", progress: 75, grade: "A" },
-            { id: "AIML501", name: "Machine Learning Fundamentals", instructor: "Prof. Sharon Roji Prisa C", schedule: "Tue, Thu 2:00 - 3:30 PM", progress: 50, grade: "A-" },
-            { id: "CSE401", name: "Data Base Management Systems", instructor: "Dr. Naveen J", schedule: "Mon, Wed 3:00 - 4:00 PM", progress: 82, grade: "B" },
-            { id: "GEN101", name: "Professional Ethics", instructor: "Dr. Ananya Sharma", schedule: "Tue 11:00 AM - 1:00 PM", progress: 95, grade: "O" }
-        ],
-        // UPDATED assignments array with new data and types
-        assignments: [
-            // September Assignments
-            { id: 1, courseId: "CSE301", title: "Lab Assignment 5: Heaps", dueDate: "2025-09-10", status: "Submitted", type: "Lab" },
-            { id: 2, courseId: "CSE301", title: "Project Phase 1", dueDate: "2025-09-22", status: "Pending", type: "Project" },
-            { id: 3, courseId: "AIML501", title: "K-Means Clustering Implementation", dueDate: "2025-09-15", status: "Graded", score: "9/10", type: "Lab" },
-            { id: 4, courseId: "AIML501", title: "Research Paper Review", dueDate: "2025-09-29", status: "Pending", type: "Report" },
-            { id: 5, courseId: "CSE401", title: "ER Diagram Design", dueDate: "2025-09-12", status: "Submitted", type: "Project" },
-            { id: 6, courseId: "CSE401", title: "SQL Query Practice", dueDate: "2025-09-25", status: "Pending", type: "Lab" },
-            { id: 7, courseId: "GEN101", title: "Case Study Analysis", dueDate: "2025-09-08", status: "Graded", score: "10/10", type: "Report" },
-            
-            // New Assignments for Other Months
-            { id: 8, courseId: "GEN101", title: "Final Report Draft", dueDate: "2025-08-28", status: "Submitted", type: "Report" },
-            { id: 9, courseId: "CSE301", title: "Quiz 2: Graphs", dueDate: "2025-10-06", status: "Pending", type: "Quiz" },
-            { id: 10, courseId: "AIML501", title: "Project Mid-review", dueDate: "2025-10-15", status: "Pending", type: "Project" },
-            { id: 11, courseId: "CSE401", title: "Lab 7: Normalization", dueDate: "2025-10-22", status: "Pending", type: "Lab" }
-        ],
-        grades: { "A": 2, "A-": 1, "B": 1, "O": 1 } // Grade distribution for the chart
-    };
+        { 
+            id: "AIML501", 
+            name: "Machine Learning Fundamentals", 
+            instructor: "Prof. Sharon Roji Prisa C", 
+            schedule: "Tue, Thu 2:00 - 3:30 PM", 
+            progress: 50, 
+            grade: "A-",
+            syllabus: `
+                <h4>Course Description</h4>
+                <p>An introduction to the field of machine learning, covering topics like supervised and unsupervised learning, regression, classification, and clustering.</p>
+                <h4>Grading Policy</h4>
+                <ul>
+                    <li>Lab Submissions: 40%</li>
+                    <li>Project: 30%</li>
+                    <li>Final Exam: 30%</li>
+                </ul>
+            `,
+            grades: [
+                { name: "Lab 1: Python Basics", score: "10/10" },
+                { name: "K-Means Clustering Implementation", score: "9/10" }
+            ],
+            resources: [
+                { name: "Introduction to ML Slides.pptx", link: "#" },
+                { name: "Pandas Library Cheat Sheet.pdf", link: "#" }
+            ]
+        },
+        { 
+            id: "CSE401", 
+            name: "Data Base Management Systems", 
+            instructor: "Dr. Naveen J", 
+            schedule: "Mon, Wed 3:00 - 4:00 PM", 
+            progress: 82, 
+            grade: "B",
+            syllabus: `
+                <h4>Course Description</h4>
+                <p>This course provides a comprehensive overview of database management systems. Topics include data models, relational algebra, SQL, database design, and transaction management.</p>
+                 <h4>Grading Policy</h4>
+                <ul>
+                    <li>Assignments & Labs: 50%</li>
+                    <li>Midterm Exam: 25%</li>
+                    <li>Final Project: 25%</li>
+                </ul>
+            `,
+            grades: [
+                { name: "ER Diagram Design", score: "Submitted" },
+                { name: "Lab 1: SQL Basics", score: "8.5/10" }
+            ],
+            resources: [
+                { name: "Normalization Notes.pdf", link: "#" },
+                { name: "SQL Practice Queries.txt", link: "#" }
+            ]
+        },
+        { 
+            id: "GEN101", 
+            name: "Professional Ethics", 
+            instructor: "Dr. Ananya Sharma", 
+            schedule: "Tue 11:00 AM - 1:00 PM", 
+            progress: 95, 
+            grade: "O",
+            syllabus: `
+                <h4>Course Description</h4>
+                <p>Explores ethical issues and decision-making in professional contexts, with a focus on engineering and technology.</p>
+                <h4>Grading Policy</h4>
+                <ul>
+                    <li>Case Study Analyses: 60%</li>
+                    <li>Final Report: 40%</li>
+                </ul>
+            `,
+            grades: [
+                { name: "Case Study Analysis", score: "10/10" },
+                { name: "Final Report Draft", score: "Submitted" }
+            ],
+            resources: [
+                { name: "Ethical Frameworks Guide.pdf", link: "#" }
+            ]
+        }
+    ],
+    assignments: [
+        // ... (rest of your assignments array remains unchanged)
+        { id: 1, courseId: "CSE301", title: "Lab Assignment 5: Heaps", dueDate: "2025-09-10", status: "Submitted", type: "Lab" },
+        { id: 2, courseId: "CSE301", title: "Project Phase 1", dueDate: "2025-09-22", status: "Pending", type: "Project" },
+        { id: 3, courseId: "AIML501", title: "K-Means Clustering Implementation", dueDate: "2025-09-15", status: "Graded", score: "9/10", type: "Lab" },
+        { id: 4, courseId: "AIML501", title: "Research Paper Review", dueDate: "2025-09-29", status: "Pending", type: "Report" },
+        { id: 5, courseId: "CSE401", title: "ER Diagram Design", dueDate: "2025-09-12", status: "Submitted", type: "Project" },
+        { id: 6, courseId: "CSE401", title: "SQL Query Practice", dueDate: "2025-09-25", status: "Pending", type: "Lab" },
+        { id: 7, courseId: "GEN101", title: "Case Study Analysis", dueDate: "2025-09-08", status: "Graded", score: "10/10", type: "Report" },
+        { id: 8, courseId: "GEN101", title: "Final Report Draft", dueDate: "2025-08-28", status: "Submitted", type: "Report" },
+        { id: 9, courseId: "CSE301", title: "Quiz 2: Graphs", dueDate: "2025-10-06", status: "Pending", type: "Quiz" },
+        { id: 10, courseId: "AIML501", title: "Project Mid-review", dueDate: "2025-10-15", status: "Pending", type: "Project" },
+        { id: 11, courseId: "CSE401", title: "Lab 7: Normalization", dueDate: "2025-10-22", status: "Pending", type: "Lab" }
+    ],
+    grades: { "A": 2, "A-": 1, "B": 1, "O": 1 }
+};
 
     // =================================================================================
     // GLOBAL UI FUNCTIONS
@@ -188,83 +288,114 @@ document.addEventListener('DOMContentLoaded', () => {
         renderTable();
     }
     
+// js/script.js
+
 function renderCourseDetail() {
-        const header = document.getElementById('course-detail-header');
-        if (!header) return;
+    const header = document.getElementById('course-detail-header');
+    if (!header) return;
 
-        const urlParams = new URLSearchParams(window.location.search);
-        const courseId = urlParams.get('courseId');
-        const course = mockData.courses.find(c => c.id === courseId);
+    const urlParams = new URLSearchParams(window.location.search);
+    const courseId = urlParams.get('courseId');
+    const course = mockData.courses.find(c => c.id === courseId);
 
-        if (!course) {
-            document.querySelector('.page-content').innerHTML = '<h1>Course not found.</h1>';
+    if (!course) {
+        document.querySelector('.page-content').innerHTML = '<h1>Course not found.</h1>';
+        return;
+    }
+
+    document.getElementById('course-page-title').textContent = course.name;
+    header.innerHTML = `<h2>${course.id}: ${course.name}</h2><p><strong>Instructor:</strong> ${course.instructor}</p>`;
+
+    const assignmentList = document.getElementById('course-assignment-list');
+    const assignmentSelect = document.getElementById('assignment-select');
+    const courseAssignments = mockData.assignments.filter(a => a.courseId === courseId);
+
+    assignmentList.innerHTML = '';
+    assignmentSelect.innerHTML = '';
+    courseAssignments.forEach(a => {
+        assignmentList.innerHTML += `<li><strong>${a.title}</strong> - Due: ${new Date(a.dueDate).toLocaleDateString()} [${a.status}]</li>`;
+        if (a.status === 'Pending') {
+             assignmentSelect.innerHTML += `<option value="${a.id}">${a.title}</option>`;
+        }
+    });
+
+    // --- NEW: Populate Syllabus, Grades, and Resources Tabs ---
+    const syllabusContent = document.querySelector('#syllabus');
+    const gradesContent = document.querySelector('#grades');
+    const resourcesContent = document.querySelector('#resources');
+
+    // Populate Syllabus
+    if (syllabusContent && course.syllabus) {
+        syllabusContent.innerHTML = `<h3>Syllabus</h3>${course.syllabus}`;
+    }
+
+    // Populate Grades
+    if (gradesContent && course.grades) {
+        let gradesHTML = '<h3>Your Grades</h3><ul class="grades-list">';
+        course.grades.forEach(grade => {
+            gradesHTML += `<li><span>${grade.name}</span><strong>${grade.score}</strong></li>`;
+        });
+        gradesHTML += '</ul>';
+        gradesContent.innerHTML = gradesHTML;
+    }
+
+    // Populate Files & Resources
+    if (resourcesContent && course.resources) {
+        let resourcesHTML = '<h3>Files & Resources</h3><ul class="resources-list">';
+        course.resources.forEach(resource => {
+            resourcesHTML += `<li><a href="${resource.link}" target="_blank"><i class="fa-solid fa-file-arrow-down icon"></i> ${resource.name}</a></li>`;
+        });
+        resourcesHTML += '</ul>';
+        resourcesContent.innerHTML = resourcesHTML;
+    }
+    
+    const tabLinks = document.querySelectorAll('.tab-link');
+    const tabContents = document.querySelectorAll('.tab-content');
+    tabLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            const tabId = link.getAttribute('data-tab');
+            tabLinks.forEach(l => l.classList.remove('active'));
+            tabContents.forEach(c => c.classList.remove('active'));
+            link.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        });
+    });
+
+    const uploadForm = document.getElementById('file-upload-form');
+    const fileInput = document.getElementById('file-input');
+
+    uploadForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        if (fileInput.files.length === 0) {
+            alert('Please select a file to upload.');
             return;
         }
 
-        document.getElementById('course-page-title').textContent = course.name;
-        header.innerHTML = `<h2>${course.id}: ${course.name}</h2><p><strong>Instructor:</strong> ${course.instructor}</p>`;
+        const formData = new FormData();
+        formData.append('assignmentFile', fileInput.files[0]);
+        formData.append('assignmentId', assignmentSelect.value);
 
-        const assignmentList = document.getElementById('course-assignment-list');
-        const assignmentSelect = document.getElementById('assignment-select');
-        const courseAssignments = mockData.assignments.filter(a => a.courseId === courseId);
-
-        assignmentList.innerHTML = '';
-        assignmentSelect.innerHTML = '';
-        courseAssignments.forEach(a => {
-            assignmentList.innerHTML += `<li><strong>${a.title}</strong> - Due: ${new Date(a.dueDate).toLocaleDateString()} [${a.status}]</li>`;
-            if (a.status === 'Pending') {
-                 assignmentSelect.innerHTML += `<option value="${a.id}">${a.title}</option>`;
-            }
-        });
-        
-        const tabLinks = document.querySelectorAll('.tab-link');
-        const tabContents = document.querySelectorAll('.tab-content');
-        tabLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                const tabId = link.getAttribute('data-tab');
-                tabLinks.forEach(l => l.classList.remove('active'));
-                tabContents.forEach(c => c.classList.remove('active'));
-                link.classList.add('active');
-                document.getElementById(tabId).classList.add('active');
+        try {
+            const response = await fetch('/api/upload', {
+                method: 'POST',
+                body: formData
             });
-        });
 
-        // --- NEW: File Upload Form Logic ---
-        const uploadForm = document.getElementById('file-upload-form');
-        const fileInput = document.getElementById('file-input');
+            const result = await response.json();
 
-        uploadForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            if (fileInput.files.length === 0) {
-                alert('Please select a file to upload.');
-                return;
+            if (response.ok) {
+                alert('Assignment submitted successfully!');
+                uploadForm.reset();
+            } else {
+                alert(`Error: ${result.message}`);
             }
-
-            const formData = new FormData();
-            formData.append('assignmentFile', fileInput.files[0]); // 'assignmentFile' must match the name in the multer config
-            formData.append('assignmentId', assignmentSelect.value);
-
-            try {
-                const response = await fetch('/api/upload', {
-                    method: 'POST',
-                    body: formData // No 'Content-Type' header needed; the browser sets it for FormData
-                });
-
-                const result = await response.json();
-
-                if (response.ok) {
-                    alert('Assignment submitted successfully!');
-                    uploadForm.reset();
-                } else {
-                    alert(`Error: ${result.message}`);
-                }
-            } catch (error) {
-                console.error('File upload error:', error);
-                alert('An error occurred during file upload.');
-            }
-        });
-    }
+        } catch (error) {
+            console.error('File upload error:', error);
+            alert('An error occurred during file upload.');
+        }
+    });
+}
 
     /**
      * Renders the profile page, including the form, grades chart, and tab functionality.

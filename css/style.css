@@ -1128,3 +1128,36 @@ a:hover {
     background-color: var(--color-medium-gray);
     cursor: not-allowed;
 }
+/* css/style.css */
+
+.grades-list,
+.resources-list {
+    list-style-type: none;
+    margin-top: 1.5rem;
+}
+
+.grades-list li,
+.resources-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid var(--color-light-gray-2);
+}
+
+.grades-list li:last-child,
+.resources-list li:last-child {
+    border-bottom: none;
+}
+
+.resources-list a {
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.grades-list li strong {
+    font-weight: 600;
+    color: var(--color-primary);
+}
