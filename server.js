@@ -132,9 +132,15 @@ app.post('/api/upload', upload.single('assignmentFile'), (req, res) => {
 
 // ==========================================================
 
-// Homepage route
+// Serve the dashboard on the homepage route
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'dashboard.html'));
+    res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
+});
+
+// A route for all other HTML files
+app.get('/:page.html', (req, res) => {
+    const page = req.params.page;
+    res.sendFile(path.join(__dirname, 'public', `${page}.html`));
 });
 
 // 8. Start the server
