@@ -115,6 +115,9 @@ document.addEventListener('DOMContentLoaded', () => {
     /**
      * Renders all assignments into the master assignment table.
      */
+    /**
+     * Renders all assignments into the master assignment table.
+     */
     function renderAllAssignments() {
         const tableBody = document.getElementById('assignments-table-body');
         const sortControl = document.getElementById('sort-assignments');
@@ -138,12 +141,16 @@ document.addEventListener('DOMContentLoaded', () => {
             tableBody.innerHTML = ''; // Clear table
             assignmentsToRender.forEach(assignment => {
                 const course = mockData.courses.find(c => c.id === assignment.courseId);
+                // MODIFICATION: Added a new table cell (<td>) with the "View Course" button
                 const rowHTML = `
                     <tr>
                         <td><span class="status-badge ${assignment.status.toLowerCase()}">${assignment.status}</span></td>
                         <td>${assignment.title}</td>
                         <td>${course.name}</td>
                         <td>${new Date(assignment.dueDate).toLocaleDateString()}</td>
+                        <td>
+                            <a href="course_detail.html?courseId=${course.id}" class="btn btn-primary btn-small">View Course</a>
+                        </td>
                     </tr>`;
                 tableBody.innerHTML += rowHTML;
             });

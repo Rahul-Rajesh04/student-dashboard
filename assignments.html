@@ -1,34 +1,81 @@
-<main class="page-content">
-    <div class="card">
-        <div class="card-header">
-            <h3>All Assignments</h3>
-            <div class="filter-controls">
-                <label for="sort-assignments">Sort by: </label>
-                <select id="sort-assignments" class="form-control" style="width: auto; display: inline-block;">
-                    <option value="due-date">Due Date</option>
-                    <option value="course">Course</option>
-                    <option value="status">Status</option>
-                </select>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignments - Student Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <div class="page-wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="assets/images/logo.png" alt="Portal Logo">
+                <h2>Student Portal</h2>
             </div>
-        </div>
-        <div class="assignments-table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Status</th>
-                        <th>Assignment</th>
-                        <th>Course</th>
-                        <th>Due Date</th>
-                    </tr>
-                </thead>
-                <tbody id="assignments-table-body">
-                    </tbody>
-            </table>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="dashboard.html"><i class="fa-solid fa-table-columns icon"></i> Dashboard</a></li>
+                    <li><a href="courses.html"><i class="fa-solid fa-book icon"></i> My Courses</a></li>
+                    <li><a href="assignments.html" class="active"><i class="fa-solid fa-clipboard-list icon"></i> Assignments</a></li>
+                    <li><a href="calendar.html"><i class="fa-solid fa-calendar-days icon"></i> Calendar</a></li>
+                    <li><a href="profile.html"><i class="fa-solid fa-user icon"></i> Profile & Settings</a></li>
+                    <li><a href="login.html"><i class="fa-solid fa-arrow-right-from-bracket icon"></i> Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <div class="main-content">
+            <header class="header">
+                <div class="header-left">
+                    <button class="mobile-menu-button"><i class="fa-solid fa-bars"></i></button>
+                    <h1 class="header-title">Assignments</h1>
+                </div>
+                <div class="header-right">
+                    <a href="#" class="header-icon"><i class="fa-solid fa-bell"></i><span class="notification-badge">3</span></a>
+                    <a href="#" class="header-icon"><i class="fa-solid fa-envelope"></i><span class="notification-badge">4</span></a>
+                    <div class="profile-info">
+                        <img src="assets/images/profile-pic.png" alt="Profile Picture">
+                        <div class="profile-text">
+                            <span class="profile-name" id="user-name">John Doe</span>
+                            <span class="profile-id" id="user-id">ID: CSE2024001</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <main class="page-content">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>All Assignments</h3>
+                        <div class="filter-controls">
+                            <label for="sort-assignments">Sort by: </label>
+                            <select id="sort-assignments" class="form-control" style="width: auto; display: inline-block;">
+                                <option value="due-date">Due Date</option>
+                                <option value="course">Course</option>
+                                <option value="status">Status</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="assignments-table-container">
+                        <table>
+                            <<thead>
+                                <tr>
+                                    <th>Status</th>
+                                    <th>Assignment</th>
+                                    <th>Course</th>
+                                    <th>Due Date</th>
+                                    <th>Actions</th> </tr>
+                            </thead>
+                            <tbody id="assignments-table-body">
+                                </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
         </div>
     </div>
-</main>
-<style>
-    table { width: 100%; border-collapse: collapse; }
-    th, td { padding: 12px 15px; text-align: left; border-bottom: 1px solid var(--color-light-gray-2); }
-    th { font-weight: 600; color: var(--color-primary); }
-</style>
+    <script src="js/script.js"></script>
+</body>
+</html>
