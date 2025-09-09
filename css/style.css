@@ -1095,3 +1095,36 @@ a:hover {
 .profile-link:hover .profile-info {
     background-color: var(--color-light-gray-1);
 }
+/* Profile Page Danger Zone */
+.section-divider {
+    border: none;
+    border-top: 1px solid var(--color-light-gray-2);
+    margin: 2rem 0;
+}
+.danger-zone h3 {
+    color: var(--color-danger);
+}
+.danger-zone-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border: 2px solid var(--color-light-gray-2);
+    border-radius: var(--border-radius);
+}
+.danger-zone-item p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--color-dark-gray);
+}
+.btn-danger {
+    background-color: var(--color-danger);
+    color: var(--color-white);
+}
+.btn-danger:hover {
+    opacity: 0.8;
+}
+.btn-danger:disabled {
+    background-color: var(--color-medium-gray);
+    cursor: not-allowed;
+}

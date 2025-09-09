@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Student Portal</title>
-    
+    <title>Profile & Settings - Student Portal</title>
     <link rel="icon" type="image/png" href="assets/images/logo.png">
-
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
@@ -37,46 +35,30 @@
                 </div>
                 <div class="header-right">
                     <div class="header-icon-wrapper">
-                        <a href="#" class="header-icon">
-                            <i class="fa-solid fa-bell"></i>
-                            <span class="notification-badge">3</span>
-                        </a>
+                        <a href="#" class="header-icon"><i class="fa-solid fa-bell"></i><span class="notification-badge">3</span></a>
                         <div class="dropdown-panel">
-                            <div class="dropdown-header">
-                                <h4>Notifications</h4>
-                            </div>
+                            <div class="dropdown-header"><h4>Notifications</h4></div>
                             <ul class="dropdown-list">
                                 <li><a href="#"><strong>CSE401:</strong> Assignment "SQL Query Practice" is due tomorrow.</a></li>
                                 <li><a href="#"><strong>AIML501:</strong> Your grade for "K-Means Clustering" has been posted.</a></li>
                                 <li><a href="#"><strong>CSE301:</strong> New announcement posted in "Course Resources".</a></li>
                             </ul>
-                            <div class="dropdown-footer">
-                                <a href="notifications.html">View All Notifications</a>
-                            </div>
+                            <div class="dropdown-footer"><a href="notifications.html">View All Notifications</a></div>
                         </div>
                     </div>
-
                     <div class="header-icon-wrapper">
-                        <a href="#" class="header-icon">
-                            <i class="fa-solid fa-envelope"></i>
-                            <span class="notification-badge">4</span>
-                        </a>
+                        <a href="#" class="header-icon"><i class="fa-solid fa-envelope"></i><span class="notification-badge">4</span></a>
                         <div class="dropdown-panel">
-                            <div class="dropdown-header">
-                                <h4>Messages</h4>
-                            </div>
-                            <ul class="dropdown-list">
-                                <li><a href="#"><strong>Dr. Naveen J:</strong> "Reminder: The project proposal deadline..."</a></li>
-                                <li><a href="#"><strong>Sharon Roji:</strong> "Hi John, please see my feedback on your..."</a></li>
-                                <li><a href="#"><strong>Study Group:</strong> "Are we meeting at the library at 4 PM?"</a></li>
-                                <li><a href="#"><strong>Admin Office:</strong> "Important: Fee payment deadline is..."</a></li>
-                            </ul>
-                            <div class="dropdown-footer">
-                                <a href="messages.html">View All Messages</a>
-                            </div>
+                             <div class="dropdown-header"><h4>Messages</h4></div>
+                             <ul class="dropdown-list">
+                                 <li><a href="#"><strong>Dr. Naveen J:</strong> "Reminder: The project proposal deadline..."</a></li>
+                                 <li><a href="#"><strong>Sharon Roji:</strong> "Hi John, please see my feedback on your..."</a></li>
+                                 <li><a href="#"><strong>Study Group:</strong> "Are we meeting at the library at 4 PM?"</a></li>
+                                 <li><a href="#"><strong>Admin Office:</strong> "Important: Fee payment deadline is..."</a></li>
+                             </ul>
+                             <div class="dropdown-footer"><a href="messages.html">View All Messages</a></div>
                         </div>
                     </div>
-
                     <a href="profile.html" class="profile-link">
                         <div class="profile-info">
                             <img src="assets/images/profile-pic.png" alt="Profile Picture">
@@ -90,97 +72,110 @@
             </header>
 
             <main class="page-content">
-    <div class="card">
-        <div class="tabs">
-            <button class="tab-link active" data-tab="profile">
-                <i class="fa-solid fa-user icon"></i> Profile Information
-            </button>
-            <button class="tab-link" data-tab="security">
-                <i class="fa-solid fa-shield-halved icon"></i> Security
-            </button>
-            <button class="tab-link" data-tab="preferences">
-                <i class="fa-solid fa-sliders icon"></i> Preferences
-            </button>
-            <button class="tab-link" data-tab="grades">
-                <i class="fa-solid fa-chart-pie icon"></i> Grades
-            </button>
-        </div>
+                <div class="card">
+                    <div class="tabs">
+                        <button class="tab-link active" data-tab="profile"><i class="fa-solid fa-user icon"></i> Profile Information</button>
+                        <button class="tab-link" data-tab="security"><i class="fa-solid fa-shield-halved icon"></i> Security</button>
+                        <button class="tab-link" data-tab="preferences"><i class="fa-solid fa-sliders icon"></i> Preferences</button>
+                    </div>
 
-        <div id="profile" class="tab-content active">
-            <h3>Edit Your Profile</h3>
-            <div class="profile-layout">
-                <div class="profile-pic-container">
-                    <img src="assets/images/profile-pic.png" alt="Profile Picture" id="profile-page-pic">
-                    <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Upload New Picture</button>
-                </div>
-                <form id="profile-form" class="profile-form-container">
-                    <div class="form-group">
-                        <label for="profile-name">Full Name</label>
-                        <input type="text" id="profile-name" class="form-control" value="" disabled>
+                    <div id="profile" class="tab-content active">
+                        <h3>Edit Your Profile</h3>
+                        <div class="profile-layout">
+                            <div class="profile-pic-container">
+                                <img src="assets/images/profile-pic.png" alt="Profile Picture" id="profile-page-pic">
+                                <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Upload New Picture</button>
+                            </div>
+                            <form id="profile-form" class="profile-form-container">
+                                <div class="form-group">
+                                    <label for="profile-name">Full Name</label>
+                                    <input type="text" id="profile-name" class="form-control" value="" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="profile-email">Email Address</label>
+                                    <input type="email" id="profile-email" class="form-control" value="" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="profile-id-field">Student ID</label>
+                                    <input type="text" id="profile-id-field" class="form-control" value="" disabled>
+                                </div>
+                                <div class="profile-form-buttons">
+                                    <button type="button" id="edit-profile-btn" class="btn btn-primary">Edit Profile</button>
+                                    <button type="submit" id="save-profile-btn" class="btn" style="display: none;">Save Changes</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="profile-email">Email Address</label>
-                        <input type="email" id="profile-email" class="form-control" value="" disabled>
-                    </div>
-                    <div class="form-group">
-                        <label for="profile-id-field">Student ID</label>
-                        <input type="text" id="profile-id-field" class="form-control" value="" disabled>
-                    </div>
-                    <div class="profile-form-buttons">
-                        <button type="button" id="edit-profile-btn" class="btn btn-primary">Edit Profile</button>
-                        <button type="submit" id="save-profile-btn" class="btn" style="display: none;">Save Changes</button>
-                    </div>
-                </form>
-            </div>
-        </div>
 
-        <div id="security" class="tab-content">
-            <h3>Change Password</h3>
-            <form id="password-form">
-                <div class="form-group">
-                    <label for="current-password">Current Password</label>
-                    <input type="password" id="current-password" class="form-control" placeholder="Enter your current password">
-                </div>
-                <div class="form-group">
-                    <label for="new-password">New Password</label>
-                    <input type="password" id="new-password" class="form-control" placeholder="Enter a new password">
-                </div>
-                 <div class="form-group">
-                    <label for="confirm-new-password">Confirm New Password</label>
-                    <input type="password" id="confirm-new-password" class="form-control" placeholder="Confirm your new password">
-                </div>
-                <button type="submit" class="btn btn-primary">Update Password</button>
-            </form>
-        </div>
+                    <div id="security" class="tab-content">
+                        <h3>Change Password</h3>
+                        <form id="password-form">
+                            <div class="form-group">
+                                <label for="current-password">Current Password</label>
+                                <input type="password" id="current-password" class="form-control" placeholder="Enter your current password">
+                            </div>
+                            <div class="form-group">
+                                <label for="new-password">New Password</label>
+                                <input type="password" id="new-password" class="form-control" placeholder="Enter a new password">
+                            </div>
+                            <div class="form-group">
+                                <label for="confirm-new-password">Confirm New Password</label>
+                                <input type="password" id="confirm-new-password" class="form-control" placeholder="Confirm your new password">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Update Password</button>
+                        </form>
+                        
+                        <hr class="section-divider">
+                        <div class="danger-zone">
+                            <h3>Danger Zone</h3>
+                            <div class="danger-zone-item">
+                                <div>
+                                    <strong>Delete this account</strong>
+                                    <p>Once you delete your account, there is no going back. Please be certain.</p>
+                                </div>
+                                <button id="show-delete-modal-btn" class="btn btn-danger">Delete Account</button>
+                            </div>
+                        </div>
+                    </div>
 
-        <div id="preferences" class="tab-content">
-            <h3>Notification Preferences</h3>
-            <form id="notification-form">
-                <div class="form-group-checkbox">
-                    <input type="checkbox" id="email-notifications" checked>
-                    <label for="email-notifications">Email me about assignment deadlines</label>
+                    <div id="preferences" class="tab-content">
+                        <h3>Notification Preferences</h3>
+                        <form id="notification-form">
+                            <div class="form-group-checkbox">
+                                <input type="checkbox" id="email-notifications" checked>
+                                <label for="email-notifications">Email me about assignment deadlines</label>
+                            </div>
+                            <div class="form-group-checkbox">
+                                <input type="checkbox" id="sms-notifications">
+                                <label for="sms-notifications">Send SMS alerts for grade updates</label>
+                            </div>
+                            <div class="form-group-checkbox">
+                                <input type="checkbox" id="announcement-notifications" checked>
+                                <label for="announcement-notifications">Notify me about new course announcements</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="margin-top: 1rem;">Save Preferences</button>
+                        </form>
+                    </div>
                 </div>
-                <div class="form-group-checkbox">
-                    <input type="checkbox" id="sms-notifications">
-                    <label for="sms-notifications">Send SMS alerts for grade updates</label>
-                </div>
-                 <div class="form-group-checkbox">
-                    <input type="checkbox" id="announcement-notifications" checked>
-                    <label for="announcement-notifications">Notify me about new course announcements</label>
-                </div>
-                <button type="submit" class="btn btn-primary" style="margin-top: 1rem;">Save Preferences</button>
-            </form>
-        </div>
-        
-        <div id="grades" class="tab-content">
-            <h3>Your Grade Distribution</h3>
-            <p>This chart shows an overview of your grades across all courses.</p>
-             <div class="chart-container" style="position: relative; height: 350px; margin-top: 2rem;">
-                 <canvas id="gradeChart"></canvas>
-             </div>
+            </main>
         </div>
     </div>
-</main>
+    
+    <div id="delete-account-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Are you absolutely sure?</h3>
+                <button id="cancel-delete-btn" class="close-btn">&times;</button>
+            </div>
+            <p>This action cannot be undone. This will permanently delete your account and all associated data.</p>
+            <p>Please type <strong>DELETE</strong> to confirm.</p>
+            <div class="form-group">
+                <input type="text" id="delete-confirm-input" class="form-control">
+            </div>
+            <div class="modal-footer">
+                <button id="cancel-delete-btn-2" class="btn btn-secondary">Cancel</button>
+                <button id="confirm-delete-btn" class="btn btn-danger" disabled>Delete My Account</button>
+            </div>
         </div>
     </div>
     

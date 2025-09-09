@@ -21,7 +21,7 @@ mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log('Successfully connected to MongoDB Atlas!'))
     .catch(error => console.error('Error connecting to MongoDB Atlas:', error));
 
-// 5. Session Configuration (NEW)
+// 5. Session Configuration
 app.use(session({
     secret: 'a_very_long_random_secret_key_for_security', // Replace with a long, random string
     resave: false,
@@ -54,7 +54,7 @@ app.post('/api/signup', async (req, res) => {
     }
 });
 
-// LOGIN ROUTE (Updated with Session Logic)
+// LOGIN ROUTE
 app.post('/api/login', async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -66,21 +66,18 @@ app.post('/api/login', async (req, res) => {
         if (!isMatch) {
             return res.status(400).json({ message: "Invalid credentials. Please try again." });
         }
-
-        // *** NEW: Create a session for the user ***
-        req.session.userId = user._id; // Store the user's unique ID in the session
-
+        req.session.userId = user._id;
         res.status(200).json({ message: "Login successful!", user: { name: user.fullName } });
     } catch (error) {
         res.status(500).json({ message: "Server error during login." });
     }
 });
 
-// *** NEW: Endpoint to get the currently logged-in user's data ***
+// GET CURRENT USER ROUTE
 app.get('/api/current-user', async (req, res) => {
     if (req.session.userId) {
         try {
-            const user = await User.findById(req.session.userId).select('-password'); // Find user but exclude password
+            const user = await User.findById(req.session.userId).select('-password');
             if (user) {
                 res.json(user);
             } else {
@@ -91,6 +88,25 @@ app.get('/api/current-user', async (req, res) => {
         }
     } else {
         res.status(401).json({ message: 'Not authenticated' });
+    }
+});
+
+// DELETE ACCOUNT ROUTE (This is the new part)
+app.delete('/api/delete-account', async (req, res) => {
+    if (!req.session.userId) {
+        return res.status(401).json({ message: 'Not authenticated' });
+    }
+    try {
+        await User.findByIdAndDelete(req.session.userId);
+        req.session.destroy(err => {
+            if (err) {
+                return res.status(500).json({ message: 'Could not log out.' });
+            }
+            res.status(200).json({ message: 'Account successfully deleted.' });
+        });
+    } catch (error) {
+        console.error("Error deleting account:", error);
+        res.status(500).json({ message: 'Server error during account deletion.' });
     }
 });
 

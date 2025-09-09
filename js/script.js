@@ -235,70 +235,82 @@ document.addEventListener('DOMContentLoaded', () => {
     /**
      * Renders the profile page, including the form, grades chart, and tab functionality.
      */
-    function renderProfilePage() {
-        const gradeChartCanvas = document.getElementById('gradeChart');
-        if (!gradeChartCanvas) return; // Exit if not on the profile page
+async function renderProfilePage() {
+    // Exit if not on the profile page
+    if (!document.getElementById('profile-form')) return;
 
-        // --- Populate Form Fields ---
-        document.getElementById('profile-name').value = mockData.user.name;
-        document.getElementById('profile-email').value = mockData.user.email;
-        document.getElementById('profile-id-field').value = mockData.user.id;
-        document.getElementById('profile-page-pic').src = mockData.user.profilePic;
-
-        // --- Edit/Save Button Logic ---
-        const editBtn = document.getElementById('edit-profile-btn');
-        const saveBtn = document.getElementById('save-profile-btn');
-        const formInputs = document.querySelectorAll('#profile-form .form-control');
-        
-        editBtn.addEventListener('click', () => {
-            formInputs.forEach(input => {
-                // Don't allow the Student ID to be editable
-                if (input.id !== 'profile-id-field') {
-                    input.disabled = false;
-                }
-            });
-            editBtn.style.display = 'none';
-            saveBtn.style.display = 'block';
+    // --- Tab Switching and Edit Button Logic (remains the same) ---
+    const editBtn = document.getElementById('edit-profile-btn');
+    const saveBtn = document.getElementById('save-profile-btn');
+    const formInputs = document.querySelectorAll('#profile-form .form-control');
+    editBtn.addEventListener('click', () => {
+        formInputs.forEach(input => {
+            if (input.id !== 'profile-id-field') input.disabled = false;
         });
-        
-        // --- Tab Switching Logic ---
-        const tabLinks = document.querySelectorAll('.tab-link');
-        const tabContents = document.querySelectorAll('.tab-content');
-        
-        tabLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                const tabId = link.getAttribute('data-tab');
-                
-                // Remove 'active' class from all tabs and content
-                tabLinks.forEach(l => l.classList.remove('active'));
-                tabContents.forEach(c => c.classList.remove('active'));
-                
-                // Add 'active' class to the clicked tab and its corresponding content
-                link.classList.add('active');
-                document.getElementById(tabId).classList.add('active');
-            });
+        editBtn.style.display = 'none';
+        saveBtn.style.display = 'block';
+    });
+    const tabLinks = document.querySelectorAll('.tab-link');
+    const tabContents = document.querySelectorAll('.tab-content');
+    tabLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            const tabId = link.getAttribute('data-tab');
+            tabLinks.forEach(l => l.classList.remove('active'));
+            tabContents.forEach(c => c.classList.remove('active'));
+            link.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
         });
+    });
 
-        // --- Render the Chart ---
-        // Prevents Chart.js from trying to re-render over an existing chart
-        if (Chart.getChart(gradeChartCanvas)) {
-            Chart.getChart(gradeChartCanvas).destroy();
+    // --- NEW: Delete Account Modal Logic ---
+    const showDeleteModalBtn = document.getElementById('show-delete-modal-btn');
+    const deleteModal = document.getElementById('delete-account-modal');
+    const cancelDeleteBtn = document.getElementById('cancel-delete-btn');
+    const cancelDeleteBtn2 = document.getElementById('cancel-delete-btn-2');
+    const confirmDeleteBtn = document.getElementById('confirm-delete-btn');
+    const deleteConfirmInput = document.getElementById('delete-confirm-input');
+
+    const openDeleteModal = () => deleteModal.classList.add('active');
+    const closeDeleteModal = () => {
+        deleteConfirmInput.value = ''; // Clear input on close
+        confirmDeleteBtn.disabled = true; // Re-disable button
+        deleteModal.classList.remove('active');
+    };
+
+    showDeleteModalBtn.addEventListener('click', openDeleteModal);
+    cancelDeleteBtn.addEventListener('click', closeDeleteModal);
+    cancelDeleteBtn2.addEventListener('click', closeDeleteModal);
+
+    // Enable the final delete button only when the user types "DELETE"
+    deleteConfirmInput.addEventListener('input', () => {
+        if (deleteConfirmInput.value === 'DELETE') {
+            confirmDeleteBtn.disabled = false;
+        } else {
+            confirmDeleteBtn.disabled = true;
         }
-        new Chart(gradeChartCanvas, {
-            type: 'doughnut',
-            data: {
-                labels: Object.keys(mockData.grades),
-                datasets: [{
-                    label: 'Grade Distribution',
-                    data: Object.values(mockData.grades),
-                    backgroundColor: ['#1dd1a1', '#4a69bd', '#feca57', '#ff6b6b', '#6a89cc'],
-                    borderWidth: 1
-                }]
-            },
-            options: { responsive: true, maintainAspectRatio: false }
-        });
-    }
+    });
 
+    // Handle the final account deletion
+    confirmDeleteBtn.addEventListener('click', async () => {
+        try {
+            const response = await fetch('/api/delete-account', {
+                method: 'DELETE',
+            });
+
+            if (response.ok) {
+                alert('Account deleted successfully. You have been logged out.');
+                window.location.href = 'login.html'; // Redirect to login page
+            } else {
+                alert('Failed to delete account. Please try again.');
+            }
+        } catch (error) {
+            console.error('Error deleting account:', error);
+            alert('A network error occurred.');
+        } finally {
+            closeDeleteModal();
+        }
+    });
+}
     // UPDATED setupCalendar function with new logic
     function setupCalendar() {
         const calendarGrid = document.getElementById('calendar-grid');
