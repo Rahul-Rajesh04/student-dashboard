@@ -137,11 +137,12 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
 });
 
-// A route for all other HTML files
+// A route for all other HTML files in the public folder
 app.get('/:page.html', (req, res) => {
     const page = req.params.page;
     res.sendFile(path.join(__dirname, 'public', `${page}.html`));
 });
+
 
 // 8. Start the server
 app.listen(PORT, () => {
