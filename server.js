@@ -36,7 +36,7 @@ mongoose.connect(process.env.MONGO_URI)
 
 // 5. Session Configuration
 app.use(session({
-    secret: 'a_very_long_random_secret_key_for_security',
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({ mongoUrl: process.env.MONGO_URI }),
