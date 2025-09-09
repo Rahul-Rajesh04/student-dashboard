@@ -1,45 +1,112 @@
-<main class="page-content">
-    <div class="card">
-        <div class="calendar-header">
-            <button class="btn"><i class="fa-solid fa-chevron-left"></i></button>
-            <h2>September 2025</h2>
-            <button class="btn"><i class="fa-solid fa-chevron-right"></i></button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar - Student Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <div class="page-wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="assets/images/logo.png" alt="Portal Logo">
+                <h2>Student Portal</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="dashboard.html"><i class="fa-solid fa-table-columns icon"></i> Dashboard</a></li>
+                    <li><a href="courses.html"><i class="fa-solid fa-book icon"></i> My Courses</a></li>
+                    <li><a href="assignments.html"><i class="fa-solid fa-clipboard-list icon"></i> Assignments</a></li>
+                    <li><a href="calendar.html" class="active"><i class="fa-solid fa-calendar-days icon"></i> Calendar</a></li>
+                    <li><a href="profile.html"><i class="fa-solid fa-user icon"></i> Profile & Settings</a></li>
+                    <li><a href="login.html"><i class="fa-solid fa-arrow-right-from-bracket icon"></i> Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <div class="main-content">
+            <header class="header">
+                <div class="header-left">
+                    <button class="mobile-menu-button"><i class="fa-solid fa-bars"></i></button>
+                    <h1 class="header-title">Calendar</h1>
+                </div>
+                <div class="header-right">
+                    <a href="#" class="header-icon"><i class="fa-solid fa-bell"></i><span class="notification-badge">3</span></a>
+                    <a href="#" class="header-icon"><i class="fa-solid fa-envelope"></i><span class="notification-badge">4</span></a>
+                    <div class="profile-info">
+                        <img src="assets/images/profile-pic.png" alt="Profile Picture">
+                        <div class="profile-text">
+                            <span class="profile-name" id="user-name">John Doe</span>
+                            <span class="profile-id" id="user-id">ID: CSE2024001</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <main class="page-content">
+                <div class="card">
+                    <div class="calendar-header">
+                        <button class="btn"><i class="fa-solid fa-chevron-left"></i></button>
+                        <div class="calendar-title">
+                            <h2>September 2025</h2>
+                        </div>
+                        <button class="btn"><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                    <div class="calendar-grid">
+                        <div class="day-name">Sun</div>
+                        <div class="day-name">Mon</div>
+                        <div class="day-name">Tue</div>
+                        <div class="day-name">Wed</div>
+                        <div class="day-name">Thu</div>
+                        <div class="day-name">Fri</div>
+                        <div class="day-name">Sat</div>
+                        
+                        <div class="day other-month"><span>31</span></div>
+                        <div class="day"><span>1</span></div>
+                        <div class="day"><span>2</span></div>
+                        <div class="day"><span>3</span><div class="event cse401">CSE401 Class</div></div>
+                        <div class="day"><span>4</span><div class="event aiml501">AIML501 Class</div></div>
+                        <div class="day"><span>5</span><div class="event cse301">CSE301 Class</div></div>
+                        <div class="day"><span>6</span></div>
+                        
+                        <div class="day"><span>7</span></div>
+                        <div class="day"><span>8</span><div class="event due-date gen101">Case Study Due</div></div>
+                        <div class="day current-day"><span>9</span><div class="event aiml501">AIML501 Class</div></div>
+                        <div class="day"><span>10</span><div class="event cse301">CSE301 Class</div><div class="event due-date">Lab Assign. 5 Due</div></div>
+                        <div class="day"><span>11</span></div>
+                        <div class="day"><span>12</span><div class="event cse301">CSE301 Class</div><div class="event due-date cse401">ER Diagram Due</div></div>
+                        <div class="day"><span>13</span></div>
+
+                        <div class="day"><span>14</span></div>
+                        <div class="day"><span>15</span><div class="event due-date aiml501">K-Means Due</div></div>
+                        <div class="day"><span>16</span><div class="event aiml501">AIML501 Class</div></div>
+                        <div class="day"><span>17</span><div class="event cse401">CSE401 Class</div></div>
+                        <div class="day"><span>18</span></div>
+                        <div class="day"><span>19</span><div class="event cse301">CSE301 Class</div></div>
+                        <div class="day"><span>20</span></div>
+
+                        <div class="day"><span>21</span></div>
+                        <div class="day"><span>22</span><div class="event cse401">CSE401 Class</div><div class="event due-date cse301">Project Ph. 1 Due</div></div>
+                        <div class="day"><span>23</span><div class="event aiml501">AIML501 Class</div></div>
+                        <div class="day"><span>24</span></div>
+                        <div class="day"><span>25</span><div class="event due-date cse401">SQL Query Due</div></div>
+                        <div class="day"><span>26</span><div class="event cse301">CSE301 Class</div></div>
+                        <div class="day"><span>27</span></div>
+
+                        <div class="day"><span>28</span></div>
+                        <div class="day"><span>29</span><div class="event due-date aiml501">Paper Review Due</div></div>
+                        <div class="day"><span>30</span></div>
+                        <div class="day other-month"><span>1</span></div>
+                        <div class="day other-month"><span>2</span></div>
+                        <div class="day other-month"><span>3</span></div>
+                        <div class="day other-month"><span>4</span></div>
+                    </div>
+                </div>
+            </main>
         </div>
-        <div class="calendar-grid">
-            <div class="day-name">Sun</div>
-            <div class="day-name">Mon</div>
-            <div class="day-name">Tue</div>
-            <div class="day-name">Wed</div>
-            <div class="day-name">Thu</div>
-            <div class="day-name">Fri</div>
-            <div class="day-name">Sat</div>
-            
-            <div class="day other-month">31</div>
-            <div class="day">1</div>
-            <div class="day">2</div>
-            <div class="day">3
-                <div class="event cse401">CSE401 Class</div>
-            </div>
-            <div class="day">4
-                <div class="event aiml501">AIML501 Class</div>
-            </div>
-            <div class="day">5
-                <div class="event cse301">CSE301 Class</div>
-                <div class="event due-date">Project Proposal Due</div>
-            </div>
-            <div class="day">6</div>
-            </div>
     </div>
-</main>
-<style>
-    .calendar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
-    .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; }
-    .day, .day-name { padding: 10px; border-radius: 4px; background: #fdfdfd; min-height: 100px; border: 1px solid var(--color-light-gray-2); }
-    .day-name { min-height: auto; text-align: center; font-weight: 600; }
-    .other-month { color: var(--color-medium-gray); }
-    .event { font-size: 0.8rem; padding: 3px 5px; border-radius: 4px; color: white; margin-top: 5px; }
-    .event.cse301 { background: #4a69bd; }
-    .event.aiml501 { background: #6a89cc; }
-    .event.cse401 { background: #82ccdd; }
-    .event.due-date { background: var(--color-danger); }
-</style>
+    <script src="js/script.js"></script>
+</body>
+</html>

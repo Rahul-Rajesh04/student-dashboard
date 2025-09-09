@@ -526,3 +526,102 @@ a:hover {
     font-weight: 500;
     line-height: 1.5;
 }
+/* =================================== */
+/* CALENDAR PAGE STYLES                */
+/* =================================== */
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--color-light-gray-2);
+}
+
+.calendar-title {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.calendar-header h2 {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+.calendar-header .btn {
+    padding: 8px 15px;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+}
+
+.day-name {
+    font-weight: 600;
+    text-align: center;
+    padding: 10px;
+    color: var(--color-primary);
+}
+
+.day {
+    padding: 10px;
+    min-height: 120px;
+    background: #ffffff;
+    border: 1px solid var(--color-light-gray-2);
+    border-radius: var(--border-radius);
+    transition: var(--transition-main);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.day:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transform: translateY(-2px);
+}
+
+.day.other-month {
+    color: var(--color-medium-gray);
+    background-color: var(--color-light-gray-1);
+}
+
+.day span {
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+/* NEW -- Makes the current day much more visible */
+.day.current-day {
+    background-color: #eef3fc; /* A subtle light blue background for the whole cell */
+    border: 1px solid #a8c5f0;  /* A soft blue border */
+}
+
+.day.current-day span {
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+.event {
+    font-size: 0.8rem;
+    padding: 4px 8px;
+    border-radius: 4px;
+    color: var(--color-white);
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.event.cse301 { background-color: #4a69bd; }
+.event.aiml501 { background-color: #6a89cc; }
+.event.cse401 { background-color: #82ccdd; }
+.event.gen101 { background-color: #ff9f43; }
+.event.due-date { background-color: var(--color-danger); }
